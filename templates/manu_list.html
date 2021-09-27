@@ -1,4 +1,7 @@
 {% extends "base.html" %}
+{% block extracss %}
+<link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+{% endblock %}
 {% block content %}
   <h3> This is the start of my child template</h3>
   <br>
@@ -11,4 +14,24 @@
     {% endfor %}
   </ul>
   <h3> This is the end of my child template</h3>
+
+  <table class="manuscriptTable">
+    <thead>
+       <tr>
+          <th> Name </th>
+          <th> Description </th>
+          <th> Transcription Status </th>
+          <th> Translation Status </th>
+       </tr>
+    </thead>
+  </table>
+{% endblock %}
+{% block extrascript %}
+  <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('#manuscriptTable').DataTable();
+    });
+  </script>
 {% endblock %}
