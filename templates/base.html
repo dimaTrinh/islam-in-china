@@ -3,16 +3,9 @@
 <head>
     <title>Flask Template Example</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block style %}
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <style type="text/css">
-      .container {
-        max-width: 500px;
-        padding-top: 100px;
-      }
-      h2 {color: red;}
-      {% block extracss %}{% endblock %}
-
-    </style>
+    {% endblock %}
 </head>
 <body>
 <div class="container">
@@ -22,7 +15,8 @@
     <br>
     <h2>This is part of my base template</h2>
 </div>
+{% block script %}
 <script src="//code.jquery.com/jquery-3.3.1.js"></script>
-{% block extrascript %}{% endblock %}
+{% endblock %}
 </body>
 </html>

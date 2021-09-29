@@ -1,37 +1,55 @@
 {% extends "base.html" %}
-{% block extracss %}
+{% block style %}
+{{ super() }}
 <link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 {% endblock %}
 {% block content %}
-  <h3> This is the start of my child template</h3>
-  <br>
-  <p>My string: {{my_string}}</p>
-  <p>Value from the list: {{my_list[3]}}</p>
-  <p>Loop through the list:</p>
-  <ul>
-    {% for n in my_list %}
-    <li>{{n}}</li>
-    {% endfor %}
-  </ul>
-  <h3> This is the end of my child template</h3>
-
-  <table class="manuscriptTable">
+<h3> This is the start of my child template</h3>
+<br>
+<table class="manuscriptTable">
     <thead>
-       <tr>
-          <th> Name </th>
-          <th> Description </th>
-          <th> Transcription Status </th>
-          <th> Translation Status </th>
-       </tr>
+    <tr>
+        <th> Arabic Title</th>
+        <th> Chinese Title</th>
+        <th> People Involved</th>
+        <th> Type</th>
+        <th> Place</th>
+        <th> Year</th>
+        <th> Publisher</th>
+        <th> Number of Pages</th>
+    </tr>
     </thead>
-  </table>
+    <tbody>
+    {% if manuscripts %}
+    {% for manu in manuscripts %}
+    <tr>
+        <td>{{manu.arab_title}}</td>
+        <td>{{manu.chinese_title}}</td>
+        <td>{{manu.people_involved}}</td>
+        <td>{{manu.type}}</td>
+        <td>{{manu.place}}</td>
+        <td>{{manu.year}}</td>
+        <td>{{manu.publisher}}</td>
+        <td>{{manu.num_pages}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<strong> There are no manuscripts available at this time in the db. </strong>
+{% endif %}
+<h3> This is the end of my child template</h3>
 {% endblock %}
-{% block extrascript %}
-  <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-  <script>
+{% block script %}
+{{ super() }}
+<script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script>
     $(document).ready(function () {
-      $('#manuscriptTable').DataTable();
+      $('#manuscriptTable').DataTable({
+      "pageLength": 10,
+      });
     });
-  </script>
+
+</script>
 {% endblock %}
