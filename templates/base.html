@@ -1,22 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Flask Template Example</title>
+    <title>Base Template</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block style %}
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
     {% endblock %}
 </head>
 <body>
 <div class="container">
-    <h2>This is part of my base template</h2>
-    <br>
     {% block content %}{% endblock %}
-    <br>
-    <h2>This is part of my base template</h2>
 </div>
 {% block script %}
-<script src="//code.jquery.com/jquery-3.3.1.js"></script>
 {% endblock %}
 </body>
 </html>
