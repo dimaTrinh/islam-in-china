@@ -41,5 +41,6 @@ def index(request: Request):
     context = dict(
         request=request,
         manuscripts=manuscripts,
+        title='Manuscript Viewing'
     )
     return templates.TemplateResponse("manu_list.html", context)
