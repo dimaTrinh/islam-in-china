@@ -12,6 +12,7 @@ templates = Jinja2Templates(directory="templates")
 
 
 class Manuscript(BaseModel):
+    index: Optional[int]
     arab_title: Optional[str]
     chinese_title: Optional[str]
     people_involved: Optional[str]
@@ -35,12 +36,31 @@ def get_data():
     return manuscripts
 
 
-@app.route("/")
-def index(request: Request):
+@app.get("/")
+async def index(request: Request):
+    context = dict(
+        request=request,
+    )
+    return templates.TemplateResponse("base.html", context)
+
+
+@app.get("/manuscripts/{manu_id}.html")
+async def ind_manu_view(request: Request, manu_id: int):
+    manuscripts = get_data()
+    context = dict(
+        request=request,
+        manu=manuscripts[manu_id],
+        title="Manuscript Individual View",
+    )
+    return templates.TemplateResponse("manu_view.html", context)
+
+
+@app.get("/manuscripts/")
+async def manu_list_view(request: Request):
     manuscripts = get_data()
     context = dict(
         request=request,
         manuscripts=manuscripts,
-        title='Manuscript Viewing'
+        title='Manuscript List View'
     )
     return templates.TemplateResponse("manu_list.html", context)
