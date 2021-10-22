@@ -38,6 +38,7 @@ def get_data():
     return manuscripts, idxDict
 
 
+# index page
 @app.get("/")
 async def index(request: Request):
     context = dict(
@@ -46,14 +47,17 @@ async def index(request: Request):
     return templates.TemplateResponse("base.html", context)
 
 
-@app.get("/manuscripts/{manu_id}/view")
+# image viewer for each manuscript
+@app.get("/manuscript_view/{manu_id}")
 async def page_manu_view(request: Request, manu_id: int):
     context = dict(
         request=request,
+        title="Image Viewer for Manuscript",
     )
     return templates.TemplateResponse("base.html", context)
 
 
+# landing page for individual manuscript
 @app.get("/manuscripts/{manu_id}")
 async def ind_manu_view(request: Request, manu_id: int):
     manuscripts, idxDict = get_data()
@@ -65,6 +69,7 @@ async def ind_manu_view(request: Request, manu_id: int):
     return templates.TemplateResponse("manu_view.html", context)
 
 
+# list of all manuscripts
 @app.get("/manuscripts/")
 async def manu_list_view(request: Request):
     manuscripts, idxDict = get_data()
