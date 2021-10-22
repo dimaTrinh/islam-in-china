@@ -54,7 +54,7 @@ async def page_manu_view(request: Request, manu_id: int):
         request=request,
         title="Image Viewer for Manuscript",
     )
-    return templates.TemplateResponse("base.html", context)
+    return templates.TemplateResponse("image_viewer.html", context)
 
 
 # landing page for individual manuscript

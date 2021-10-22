@@ -1000,9 +1000,10 @@ section {
   font-weight: 600;
   transition: 0.3s;
 }
+
 .pricing .box .btn-buy:hover {
-  background: #5c9f24;
-  color: #fff;
+  background: #fff;
+  color: #5c9f24;
 }
 .pricing .recommended {
   background: #5c9f24;
