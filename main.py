@@ -26,14 +26,16 @@ class Manuscript(BaseModel):
 def get_data():
     data_dir = Path.cwd() / 'data'
     manuscripts = []
-    for item in data_dir.iterdir():
+    idxDict = {}  # map the real index of the manuscript to the index in the list above
+    for (index, item) in enumerate(data_dir.iterdir()):
         data = srsly.read_json(item)
         if data:
             item = Manuscript(**data)
             manuscripts.append(item)
+            idxDict[item.index] = index
         else:
             raise FileNotFoundError("Manuscript data file is missing")
-    return manuscripts
+    return manuscripts, idxDict
 
 
 @app.get("/")
@@ -44,12 +46,20 @@ async def index(request: Request):
     return templates.TemplateResponse("base.html", context)
 
 
-@app.get("/manuscripts/{manu_id}.html")
-async def ind_manu_view(request: Request, manu_id: int):
-    manuscripts = get_data()
+@app.get("/manuscripts/{manu_id}/view")
+async def page_manu_view(request: Request, manu_id: int):
     context = dict(
         request=request,
-        manu=manuscripts[manu_id],
+    )
+    return templates.TemplateResponse("base.html", context)
+
+
+@app.get("/manuscripts/{manu_id}")
+async def ind_manu_view(request: Request, manu_id: int):
+    manuscripts, idxDict = get_data()
+    context = dict(
+        request=request,
+        manu=manuscripts[idxDict[manu_id]],
         title="Manuscript Individual View",
     )
     return templates.TemplateResponse("manu_view.html", context)
@@ -57,7 +67,7 @@ async def ind_manu_view(request: Request, manu_id: int):
 
 @app.get("/manuscripts/")
 async def manu_list_view(request: Request):
-    manuscripts = get_data()
+    manuscripts, idxDict = get_data()
     context = dict(
         request=request,
         manuscripts=manuscripts,

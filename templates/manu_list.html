@@ -25,7 +25,7 @@
             {% if manuscripts %}
             {% for manu in manuscripts %}
             <tr>
-                <td><a href="{{ '/manuscripts/%s.html' %manu.index }}" style="display:block;">{{manu.arab_title}}</a>
+                <td><a href="{{ '/manuscripts/%s' %manu.index }}" style="display:block;">{{manu.arab_title}}</a>
                 </td>
                 <td>{{manu.chinese_title}}</td>
                 <td>{{manu.people_involved}}</td>
@@ -55,5 +55,6 @@
   "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
   });
 });
+
 </script>
 {% endblock %}
