@@ -2,6 +2,14 @@
 {% block title %}{{title}}{% endblock %}
 {% block head %}
 {{super()}}
+<style type="text/css">
+    "mirardor-viewer"{
+        margin-top: 7%;
+        width: 50%;
+        height: 50%;
+    }
+
+</style>
 {% endblock %}
 {% block content %}
 <main id="main">
@@ -21,11 +29,41 @@
     </section><!-- End Breadcrumbs -->
 
     <section class="inner-page">
-        <div class="container">
+        <div id="mirador-viewer" style="width:50%;">
         </div>
     </section>
 </main><!-- End #main -->
 {% endblock %}
 {% block script %}
 {{ super() }}
+<script src="https://unpkg.com/mirador@latest/dist/mirador.min.js"></script>
+<script type="text/javascript">
+    var miradorInstance = Mirador.viewer({
+        id: 'mirador-viewer',
+        window: {
+            allowWindowSideBar: false,
+            allowClose: false,
+            allowMaximize: false,
+            defaultView: "book",
+            hideWindowTitle: true,
+            views: [
+                { key: "single"},
+                { key: "book"},
+                { key: "scroll"},
+                { key: "gallery"},
+            ]
+        },
+        windows: [{
+         loadedManifest:'https://gist.githubusercontent.com/dimaTrinh/27645f645ca4a6844db4b60208eaa79d/raw/a06f19ba45d21ff19786e1f9aa9475fc396dc1ee/manifest.json',
+         thumbnailNavigationPosition: 'far-bottom',
+        }],
+        workspace:{
+            allowNewWindows: false,
+        },
+         workspaceControlPanel: {
+            enabled: false,
+        },
+    });
+
+</script>
 {% endblock %}
