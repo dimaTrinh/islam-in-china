@@ -43,8 +43,9 @@ def get_data():
 async def index(request: Request):
     context = dict(
         request=request,
+        title="Landing Page",
     )
-    return templates.TemplateResponse("base.html", context)
+    return templates.TemplateResponse("index.html", context)
 
 
 # image viewer for each manuscript
