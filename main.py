@@ -12,30 +12,38 @@ templates = Jinja2Templates(directory="templates")
 
 
 class Manuscript(BaseModel):
-    index: Optional[int]
+    id: Optional[str]
     arab_title: Optional[str]
     chinese_title: Optional[str]
-    people_involved: Optional[str]
+    author: Optional[str]
+    assembler: Optional[str]
+    editor: Optional[str]
+    scrivener: Optional[str]
+    translator: Optional[str]
     type: Optional[str]
     place: Optional[str]
-    year: Optional[str]
     publisher: Optional[str]
-    num_pages: Optional[str]
+    year: Optional[str]
+    stand_year: Optional[int]
+    language: Optional[str]
+    num_pages: Optional[int]
+    description: Optional[str]
+    notes: Optional[str]
 
 
 def get_data():
     data_dir = Path.cwd() / 'data'
-    manuscripts = []
-    idxDict = {}  # map the real index of the manuscript to the index in the list above
+    manuscripts = []  # list of manuscripts
+    idx_dict = {}  # map the id of the manuscript to the index in the list above
     for (index, item) in enumerate(data_dir.iterdir()):
         data = srsly.read_json(item)
         if data:
             item = Manuscript(**data)
             manuscripts.append(item)
-            idxDict[item.index] = index
+            idx_dict[item.index] = index
         else:
-            raise FileNotFoundError("Manuscript data file is missing")
-    return manuscripts, idxDict
+            raise FileNotFoundError("Manuscript old_data file is missing")
+    return manuscripts, idx_dict
 
 
 # index page
@@ -61,10 +69,10 @@ async def page_manu_view(request: Request, manu_id: int):
 # landing page for individual manuscript
 @app.get("/manuscripts/{manu_id}")
 async def ind_manu_view(request: Request, manu_id: int):
-    manuscripts, idxDict = get_data()
+    manuscripts, idx_dict = get_data()
     context = dict(
         request=request,
-        manu=manuscripts[idxDict[manu_id]],
+        manu=manuscripts[idx_dict[manu_id]],
         title="Manuscript Individual View",
     )
     return templates.TemplateResponse("manu_view.html", context)
@@ -73,7 +81,7 @@ async def ind_manu_view(request: Request, manu_id: int):
 # list of all manuscripts
 @app.get("/manuscripts/")
 async def manu_list_view(request: Request):
-    manuscripts, idxDict = get_data()
+    manuscripts, idx_dict = get_data()
     context = dict(
         request=request,
         manuscripts=manuscripts,
