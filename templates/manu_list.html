@@ -18,6 +18,8 @@
             </div>
         </div>
     </div><!-- End Breadcrumbs -->
+
+    <!--Begin of table-->
     <div class="container mb-5">
         <br>
         <table id="manuscriptTable" class="table table-hover">
@@ -25,7 +27,10 @@
             <tr>
                 <th> Arabic Title</th>
                 <th> Chinese Title</th>
-                <th> People Involved</th>
+                <th> Author</th>
+                <th> Assembler</th>
+                <th> Editor</th>
+                <th> Translator</th>
                 <th> Type</th>
                 <th> Place</th>
                 <th> Year</th>
@@ -37,13 +42,16 @@
             {% if manuscripts %}
             {% for manu in manuscripts %}
             <tr>
-                <td><a href="{{ '/manuscripts/%s' %manu.index }}" style="display:block;">{{manu.arab_title}}</a>
+                <td><a href="{{ '/manuscripts/%s' %manu.id }}" style="display:block;">{{manu.arab_title}}</a>
                 </td>
                 <td>{{manu.chinese_title}}</td>
-                <td>{{manu.people_involved}}</td>
+                <td>{{manu.author}}</td>
+                <td>{{manu.assembler}}</td>
+                <td>{{manu.editor}}</td>
+                <td>{{manu.translator}}</td>
                 <td>{{manu.type}}</td>
                 <td>{{manu.place}}</td>
-                <td>{{manu.year}}</td>
+                <td>{{manu.stand_year}}</td>
                 <td>{{manu.publisher}}</td>
                 <td>{{manu.num_pages}}</td>
             </tr>
@@ -77,5 +85,6 @@
   ],
   });
 });
+
 </script>
 {% endblock %}

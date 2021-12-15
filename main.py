@@ -40,7 +40,7 @@ def get_data():
         if data:
             item = Manuscript(**data)
             manuscripts.append(item)
-            idx_dict[item.index] = index
+            idx_dict[item.id] = index
         else:
             raise FileNotFoundError("Manuscript old_data file is missing")
     return manuscripts, idx_dict
@@ -58,7 +58,7 @@ async def index(request: Request):
 
 # image viewer for each manuscript
 @app.get("/manuscript_view/{manu_id}")
-async def page_manu_view(request: Request, manu_id: int):
+async def page_manu_view(request: Request, manu_id: str):
     context = dict(
         request=request,
         title="Image Viewer for Manuscript",
@@ -68,7 +68,7 @@ async def page_manu_view(request: Request, manu_id: int):
 
 # landing page for individual manuscript
 @app.get("/manuscripts/{manu_id}")
-async def ind_manu_view(request: Request, manu_id: int):
+async def ind_manu_view(request: Request, manu_id: str):
     manuscripts, idx_dict = get_data()
     context = dict(
         request=request,
