@@ -4,3 +4,4 @@ pandas
 aiofiles
 jinja2
 srsly
+iiif-prezi
