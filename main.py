@@ -59,8 +59,10 @@ async def index(request: Request):
 # image viewer for each manuscript
 @app.get("/manuscript_view/{manu_id}")
 async def page_manu_view(request: Request, manu_id: str):
+    manuscripts, idx_dict = get_data()
     context = dict(
         request=request,
+        manu=manuscripts[idx_dict[manu_id]],
         title="Image Viewer for Manuscript",
     )
     return templates.TemplateResponse("image_viewer.html", context)
