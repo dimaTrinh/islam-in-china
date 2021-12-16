@@ -27,11 +27,12 @@ img_dict = {}  # dictionary that maps a manuscript id with the images in the man
 for img in image_dir.iterdir():
     # getting manuscript name from image file
     manu_name = PurePath(img).parts[-1].split('_page')[0]
-
-    if manu_name not in img_dict:
-        img_dict[manu_name] = [img]
-    else:
-        img_dict[manu_name].append(img)
+    
+    #get page number and remove leading 0
+    pg_number = int(PurePath(img).parts[-1].split('page_')[-1].split('.')[0].lstrip("0"))
+    if manu_name not in img_dict: #create a dictionary that maps page number to the right image
+        img_dict[manu_name] = {}
+    img_dict[manu_name][pg_number] = img
 
 for (index, item) in enumerate(data_dir.iterdir()):
     # extract the id of the manuscript from the directory path
@@ -44,9 +45,9 @@ for (index, item) in enumerate(data_dir.iterdir()):
     manifest.viewingDirection = "left-to-right"
     seq = manifest.sequence()
 
-    for img in img_dict[manu_name]:
+    for page in range(1, len(img_dict[manu_name])+1):
         # extract identity from image's name
-        ident = PurePath(img).parts[-1]
+        ident = PurePath(img_dict[manu_name][page]).parts[-1]
         #get page number
         title = 'Page ' + ident.split('page_')[-1].split('.')[0]
         cvs = seq.canvas(ident=ident, label=title)
