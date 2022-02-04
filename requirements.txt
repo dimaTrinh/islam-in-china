@@ -5,3 +5,4 @@ aiofiles
 jinja2
 srsly
 iiif-prezi
+pdf2image

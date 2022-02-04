@@ -1,1 +1,19 @@
-{"id":"text_002","arab_title":"As\u0101s al-Ul\u016bm ma'a al-Shar\u1e25 al-\u1e62\u012bn\u012b wa al-\u1e24arak\u0101t wa al-I'r\u0101b","chinese_title":"\u8fde\u4e94\u672c","author":null,"assembler":null,"editor":null,"scrivener":null,"translator":null,"type":"Manuscript","place":null,"publisher":null,"year":"Circa. 1937","stand_year":1937,"language":"Arabic||Persian||Chinese","num_pages":195,"description":"Five books in one volume. Three books can be identified as \u1e62arf-e M\u012br by 'Ali ibn Mu\u1e25ammad ibn 'Ali al-\u1e24usayn\u012b al-Jurj\u0101n\u012b (d.1413); Ta\u1e63r\u012bf 'Izz\u012b by 'Izzi al-Din al-Zanj\u0101n\u012b (d.1237); and Mi\u2019at '\u0100mil by 'Abd al-Q\u0101hir al-Jurj\u0101n\u012b (d.1078\/1081).","notes":"Popular volume for teaching Arabic grammar among Sino-Muslims. Widely used in the Muslim world. Manuscript is likely of a more recent printing of a text copied circa. 1930s. When the text was initially compiled is unknown. "}
+{
+  "id": "text_002",
+  "arab_title": "As\u0101s al-Ul\u016bm ma'a al-Shar\u1e25 al-\u1e62\u012bn\u012b wa al-\u1e24arak\u0101t wa al-I'r\u0101b",
+  "chinese_title": "\u8fde\u4e94\u672c",
+  "author": null,
+  "assembler": null,
+  "editor": null,
+  "scrivener": null,
+  "translator": null,
+  "type": "Manuscript",
+  "place": null,
+  "publisher": null,
+  "year": "Circa. 1937",
+  "stand_year": 1937.0,
+  "language": "Arabic||Persian||Chinese",
+  "num_pages": 195.0,
+  "description": "Five books in one volume. Three books can be identified as \u1e62arf-e M\u012br by 'Ali ibn Mu\u1e25ammad ibn 'Ali al-\u1e24usayn\u012b al-Jurj\u0101n\u012b (d.1413); Ta\u1e63r\u012bf 'Izz\u012b by 'Izzi al-Din al-Zanj\u0101n\u012b (d.1237); and Mi\u2019at '\u0100mil by 'Abd al-Q\u0101hir al-Jurj\u0101n\u012b (d.1078\/1081).",
+  "notes": "Popular volume for teaching Arabic grammar among Sino-Muslims. Widely used in the Muslim world. Manuscript is likely of a more recent printing of a text copied circa. 1930s. When the text was initially compiled is unknown. "
+}

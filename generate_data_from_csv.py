@@ -13,7 +13,7 @@ if __name__ == '__main__':
         raise FileNotFoundError("Manuscript file is missing")
 
     # only select the rows that are finished record
-    manu_df = manu_df.head(3)
+    manu_df = manu_df.head(4)
 
     # renaming columns
     manu_df.columns = ['id', 'arab_title', 'chinese_title', 'author', 'assembler', 'editor',
