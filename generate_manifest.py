@@ -7,15 +7,15 @@ import json
 
 fac = ManifestFactory()
 image_dir = Path.cwd() / 'assets' / 'img' / 'texts'
-pre_zir = "/tmp"
 
 # Where the resources live on the web
-fac.set_base_prezi_uri("http://167.99.0.192:8000/iiif/2/")
+cant_server = "http://167.99.0.192:8000/iiif/2/"
+fac.set_base_prezi_uri(cant_server)
 # Where the resources live on disk
-fac.set_base_prezi_dir(image_dir)
+fac.set_base_prezi_dir("/")
 
 # Default Image API information
-fac.set_base_image_uri("http://167.99.0.192:8000/iiif/2/")
+fac.set_base_image_uri(cant_server)
 fac.set_iiif_image_info(2.0, 2)  # Version, ComplianceLevel
 
 fac.set_debug("warn")
