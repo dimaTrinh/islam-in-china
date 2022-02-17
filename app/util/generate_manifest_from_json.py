@@ -29,7 +29,8 @@ async def generate_ind_manifest(text_id, num_pages):
     # create a canvas for each individual page in a manuscript
     for page in range(1, num_pages + 1):
         # get the identity of the image
-        ident = '{}_page_{}.jpg'.format(text_id, page)
+        pg_number = str(page).zfill(3)
+        ident = '{}_page_{}.jpg'.format(text_id, pg_number)
         ind_img = image_dir / ident
 
         # get page number as label for the page
