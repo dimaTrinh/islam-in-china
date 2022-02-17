@@ -1,6 +1,10 @@
 from fastapi import Request, APIRouter, Depends, UploadFile, File, Form
 from fastapi.templating import Jinja2Templates
 from app.util.login import get_current_username
+from app.util.handle_data_from_csv import get_data_from_csv, write_data_to_csv
+from app.util.models import get_data
+import os
+import pandas as pd
 
 router = APIRouter()
 templates = Jinja2Templates(directory="templates")
@@ -35,9 +39,22 @@ async def handle_form(request: Request,
                       notes: str = Form(None),
                       manu_file: UploadFile = File(...)):
     manu_content = await manu_file.read()
-    print(manu_file.filename)
+
+    # generate new row to be written to the csv file from the form
+    new_manu_ind = str(get_data_from_csv(write_file=False) + 1)
+    new_manu_id = "text_{}".format(new_manu_ind.zfill(3))
+    new_row = [new_manu_id, arab_title, chinese_title, author, assembler, editor,
+               scrivener, translator, type, place, publisher, year, stand_year, language,
+               num_pages, description, notes]
+    write_data_to_csv(new_row)
+
+    # generate new data for the site and new manifest
+    get_data_from_csv(write_file=True)
+
+    manuscripts, idx_dict = get_data()
     context = dict(
         request=request,
-        title="Add Manuscript",
+        manuscripts=manuscripts,
+        title='Manuscript List View'
     )
-    return templates.TemplateResponse("manu_add.html", context)
+    return templates.TemplateResponse("manu_list.html", context)
