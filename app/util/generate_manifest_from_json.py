@@ -33,7 +33,7 @@ async def generate_ind_manifest(text_id, num_pages):
         ind_img = image_dir / ident
 
         # get page number as label for the page
-        title = 'Page ' + page
+        title = 'Page {}'.format(page)
         cvs = seq.canvas(ident=ident, label=title)
         cvs.set_image_annotation(ident, iiif=True)
 
