@@ -11,6 +11,7 @@ import os
 
 app = FastAPI()
 app.mount("/assets", StaticFiles(directory="assets"), name="assets")
+app.mount("/data", StaticFiles(directory="data"), name="data")
 templates = Jinja2Templates(directory="templates")
 app.include_router(add_manuscript.router)
 

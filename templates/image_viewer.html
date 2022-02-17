@@ -9,7 +9,6 @@
         position: relative;
     }
 
-
 </style>
 {% endblock %}
 {% block content %}
@@ -41,7 +40,7 @@
 {{ super() }}
 <script src="https://unpkg.com/mirador@latest/dist/mirador.min.js"></script>
 <script type="text/javascript">
-    var manifestFile = '{{'../assets/manifests/%s.json' %manu.id}}'
+    var manifestFile = '{{'../data/manifests/%s.json' %manu.id}}'
     var miradorInstance = Mirador.viewer({
         id: 'mirador-viewer',
         window: {
@@ -71,6 +70,8 @@
             enabled: false,
         },
     });
+
+
 
 
 </script>

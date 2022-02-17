@@ -45,7 +45,7 @@ async def generate_ind_manifest(text_id, num_pages):
         json.dump(mfst, outfile)
 
 
-def generate_all_manifest():
+async def generate_all_manifest():
     fac = ManifestFactory()
     image_dir = Path.cwd() / 'assets' / 'img' / 'texts'
 
