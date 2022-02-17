@@ -5,11 +5,13 @@ from pydantic import BaseModel, Json
 from typing import Optional
 import srsly
 from pathlib import Path
-from app.util.login import get_current_username
+from app.routers import add_manuscript
 
 app = FastAPI()
 app.mount("/assets", StaticFiles(directory="assets"), name="assets")
 templates = Jinja2Templates(directory="templates")
+
+app.include_router(add_manuscript.router)
 
 
 class Manuscript(BaseModel):
@@ -49,7 +51,7 @@ def get_data():
 
 # index page
 @app.get("/")
-async def index(request: Request, username: str = Depends(get_current_username)):
+async def index(request: Request):
     context = dict(
         request=request,
         title="Landing Page",

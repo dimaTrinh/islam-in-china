@@ -11,7 +11,7 @@ except KeyError:
 try:
     env_password = os.environ["ISLAM_PASSWORD"]
 except KeyError:
-    env_password = "testingIslam"
+    env_password = "testing"
 
 
 def get_current_username(credentials: HTTPBasicCredentials = Depends(security)):
