@@ -25,7 +25,7 @@ class Manuscript(BaseModel):
 
 
 def get_data():
-    data_dir = Path() / 'data'
+    data_dir = Path() / 'data' / 'metadata'
     manuscripts = []  # list of manuscripts
     idx_dict = {}  # map the id of the manuscript to the index in the list above
     for (index, item) in enumerate(data_dir.iterdir()):

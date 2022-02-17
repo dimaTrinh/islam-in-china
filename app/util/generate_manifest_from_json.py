@@ -5,8 +5,47 @@ import json
 
 # refer to https://github.com/iiif-prezi/iiif-prezi/blob/master/CODE_WALKTHROUGH.md
 # https://github.com/iiif-prezi/iiif-prezi/blob/master/examples/build-from-directory.py
+def generate_ind_manifest(text_id, num_pages):
+    fac = ManifestFactory()
+    image_dir = Path.cwd() / 'assets' / 'img' / 'texts'
 
-def generate_manifest():
+    # Where the resources live on the web
+    cant_server = "http://167.99.0.192:8000/iiif/2/"
+    fac.set_base_prezi_uri(cant_server)
+    # Where the resources live on disk
+    fac.set_base_prezi_dir("/")
+
+    # Default Image API information
+    fac.set_base_image_uri(cant_server)
+    fac.set_iiif_image_info(2.0, 2)  # Version, ComplianceLevel
+
+    fac.set_debug("warn")
+    # setting up the manifest for each manuscript
+    manifest = fac.manifest(ident="identifier/{}".format(text_id),
+                            label="Manifest for {}".format(text_id))
+    manifest.viewingDirection = "left-to-right"
+    seq = manifest.sequence()
+
+    # create a canvas for each individual page in a manuscript
+    for page in range(1, num_pages + 1):
+        # get the identity of the image
+        ident = '{}_page_{}.jpg'.format(text_id, page)
+        ind_img = image_dir / ident
+
+        # get page number as label for the page
+        title = 'Page ' + page
+        cvs = seq.canvas(ident=ident, label=title)
+        cvs.set_image_annotation(ident, iiif=True)
+
+    # exporting the manifest file to the manifest directory
+    mfst = manifest.toJSON(top=True)
+
+    manifest_dir = Path.cwd() / 'data' / 'manifests' / '{}.json'.format(text_id)
+    with open(manifest_dir, 'w') as outfile:
+        json.dump(mfst, outfile)
+
+
+def generate_all_manifest():
     fac = ManifestFactory()
     image_dir = Path.cwd() / 'assets' / 'img' / 'texts'
 
@@ -35,12 +74,11 @@ def generate_manifest():
             img_dict[manu_name] = {}
         img_dict[manu_name][pg_number] = img
 
-    data_dir = Path.cwd() / 'data'
+    data_dir = Path.cwd() / 'data' / 'metadata'
     # iterating through the manuscript files in the data folder
     for (index, item) in enumerate(data_dir.iterdir()):
         # extract the id of the manuscript from the directory path
         manu_name = PurePath(item).parts[-1].split('.')[0]
-        print("Building manuscript for {}".format(manu_name))
 
         # setting up the manifest for each manuscript
         manifest = fac.manifest(ident="identifier/{}".format(manu_name),
@@ -60,6 +98,6 @@ def generate_manifest():
         # exporting the manifest file to the manifest directory
         mfst = manifest.toJSON(top=True)
 
-        manifest_dir = Path.cwd() / 'assets' / 'manifests' / '{}.json'.format(manu_name)
+        manifest_dir = Path.cwd() / 'data' / 'manifests' / '{}.json'.format(manu_name)
         with open(manifest_dir, 'w') as outfile:
             json.dump(mfst, outfile)

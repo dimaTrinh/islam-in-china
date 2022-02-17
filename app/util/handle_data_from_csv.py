@@ -4,7 +4,7 @@ from csv import writer
 
 
 def get_data_from_csv(write_file=False):  # whether we want to write new files to disk or not
-    manu_data_dir = Path.cwd() / 'assets' / 'csv' / 'pilot_manuscript.csv'
+    manu_data_dir = Path.cwd() / 'data' / 'csv' / 'pilot_manuscript.csv'
 
     # checking if the manuscript csv is available
     if (manu_data_dir.is_file()):
@@ -22,7 +22,7 @@ def get_data_from_csv(write_file=False):  # whether we want to write new files t
         # export each manuscript to an individual json file
         for i in manu_df.index:
             # the file is saved by their project ID
-            ind_manu_dir = Path.cwd() / 'data' / '{}.json'.format(manu_df.loc[i].id)
+            ind_manu_dir = Path.cwd() / 'data' / 'metadata' / '{}.json'.format(manu_df.loc[i].id)
             if not (ind_manu_dir.is_file()):  # the file has not been saved yet:
                 manu_df.loc[i].to_json(ind_manu_dir)
 
@@ -30,7 +30,7 @@ def get_data_from_csv(write_file=False):  # whether we want to write new files t
 
 
 def write_data_to_csv(new_row):
-    manu_data_dir = Path.cwd() / 'assets' / 'csv' / 'pilot_manuscript.csv'
+    manu_data_dir = Path.cwd() / 'data' / 'csv' / 'pilot_manuscript.csv'
 
     with open(manu_data_dir, 'a+', newline='') as write_obj:
         # Create a writer object from csv module
