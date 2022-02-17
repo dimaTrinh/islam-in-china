@@ -5,7 +5,7 @@ import json
 
 # refer to https://github.com/iiif-prezi/iiif-prezi/blob/master/CODE_WALKTHROUGH.md
 # https://github.com/iiif-prezi/iiif-prezi/blob/master/examples/build-from-directory.py
-def generate_ind_manifest(text_id, num_pages):
+async def generate_ind_manifest(text_id, num_pages):
     fac = ManifestFactory()
     image_dir = Path.cwd() / 'assets' / 'img' / 'texts'
 

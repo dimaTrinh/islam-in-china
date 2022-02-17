@@ -41,21 +41,21 @@ async def handle_form(request: Request,
     manu_content = await manu_file.read()
 
     # get the index for the new text
-    new_manu_ind = str(get_data_from_csv(write_file=False) + 1)
+    new_manu_ind = str(await get_data_from_csv(write_file=False) + 1)
     new_manu_id = "text_{}".format(new_manu_ind.zfill(3))
 
     # save the pdf to images on the server
-    num_pdf_pages = pdf_to_images(manu_content, new_manu_id, num_pages)
+    num_pdf_pages = await pdf_to_images(manu_content, new_manu_id, num_pages)
     print("Number of pages in this pdf:", num_pdf_pages)
     # generate new row to be written to the csv file from the form
     new_row = [new_manu_id, arab_title, chinese_title, author, assembler, editor,
                scrivener, translator, type, place, publisher, year, stand_year, language,
                num_pages, description, notes]
-    write_data_to_csv(new_row)
+    await write_data_to_csv(new_row)
 
     # generate new data for the site and new manifest
-    get_data_from_csv(write_file=True)
-    generate_ind_manifest(new_manu_id, num_pdf_pages)
+    await get_data_from_csv(write_file=True)
+    await generate_ind_manifest(new_manu_id, num_pdf_pages)
 
     manuscripts, idx_dict = get_data()
     context = dict(

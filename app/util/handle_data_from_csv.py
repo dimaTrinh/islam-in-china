@@ -3,7 +3,7 @@ from pathlib import Path
 from csv import writer
 
 
-def get_data_from_csv(write_file=False):  # whether we want to write new files to disk or not
+async def get_data_from_csv(write_file=False):  # whether we want to write new files to disk or not
     manu_data_dir = Path.cwd() / 'data' / 'csv' / 'pilot_manuscript.csv'
 
     # checking if the manuscript csv is available
@@ -29,7 +29,7 @@ def get_data_from_csv(write_file=False):  # whether we want to write new files t
     return len(manu_df.index)
 
 
-def write_data_to_csv(new_row):
+async def write_data_to_csv(new_row):
     manu_data_dir = Path.cwd() / 'data' / 'csv' / 'pilot_manuscript.csv'
 
     with open(manu_data_dir, 'a+', newline='') as write_obj:

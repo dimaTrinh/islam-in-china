@@ -4,7 +4,7 @@ from pathlib import Path
 
 # reference:  https://pdf2image.readthedocs.io/en/latest/overview.html
 
-def pdf_to_images(pdf_file, text_id, num_pages):
+async def pdf_to_images(pdf_file, text_id, num_pages):
     images = convert_from_bytes(pdf_file)
 
     for i in range(0, len(images)):
