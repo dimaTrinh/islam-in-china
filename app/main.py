@@ -31,7 +31,7 @@ async def index(request: Request):
 # image viewer for each manuscript
 @app.get("/manuscript_view/{manu_id}")
 async def page_manu_view(request: Request, manu_id: str):
-    manuscripts, idx_dict = get_data()
+    manuscripts, idx_dict = await get_data()
     context = dict(
         request=request,
         manu=manuscripts[idx_dict[manu_id]],
@@ -43,7 +43,7 @@ async def page_manu_view(request: Request, manu_id: str):
 # landing page for individual manuscript
 @app.get("/manuscripts/{manu_id}")
 async def ind_manu_view(request: Request, manu_id: str):
-    manuscripts, idx_dict = get_data()
+    manuscripts, idx_dict = await get_data()
     context = dict(
         request=request,
         manu=manuscripts[idx_dict[manu_id]],
@@ -55,7 +55,7 @@ async def ind_manu_view(request: Request, manu_id: str):
 # list of all manuscripts
 @app.get("/manuscripts/")
 async def manu_list_view(request: Request):
-    manuscripts, idx_dict = get_data()
+    manuscripts, idx_dict = await get_data()
     context = dict(
         request=request,
         manuscripts=manuscripts,
