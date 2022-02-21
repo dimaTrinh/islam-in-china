@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% block title %}{{title}}{% endblock %}
+{% block head %}
+{{super()}}
+{% endblock %}
+{% block content %}
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Create New Manuscript</h2>
+                <ol>
+                    <li><a href="/">Home</a></li>
+                    <li>Add Manuscript</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Portfolio Details Section ======= -->
+    <section id="manuscript-details" class="portfolio-details">
+        <div class="container">
+            <div class="row my-5">
+                <h3 class="text-center display-4">Adding a new manuscript</h3>
+                <form action="/add_manu_form" method="POST" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label class="form-label">Arab Title*</label>
+                        <input type="text" required class="form-control" name="arab_title" value="{{arab_title}}"
+                               placeholder="Arab title">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Chinese Title</label>
+                        <input type="text" class="form-control" name="chinese_title" value="{{chinese_title}}"
+                               placeholder="Chinese title">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Author</label>
+                        <input type="text" class="form-control" name="author" value="{{author}}"
+                               placeholder="Author's name">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Assembler</label>
+                        <input type="text" class="form-control" name="assembler" value="{{assembler}}"
+                               placeholder="Assembler's name">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Editor</label>
+                        <input type="text" class="form-control" name="editor" value="{{editor}}"
+                               placeholder="Editor's name">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Scrivener</label>
+                        <input type="text" class="form-control" name="scrivener" value="{{scrivener}}"
+                               placeholder="Scrivener's name">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Translator</label>
+                        <input type="text" class="form-control" name="translator" value="{{translator}}"
+                               placeholder="Translator's name">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Type</label>
+                        <input type="text" class="form-control" name="type" value="{{type}}"
+                               placeholder="Type of the manuscript">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Place of publication</label>
+                        <input type="text" class="form-control" name="place" value="{{place}}"
+                               placeholder="Place of publication">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Publisher</label>
+                        <input type="text" class="form-control" name="publisher" value="{{publisher}}"
+                               placeholder="Name of publisher">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Year of publication</label>
+                        <input type="text" class="form-control" name="year" value="{{year}}"
+                               placeholder="Year of publication e.g. 2011 or Circa. 1937">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Standard year of publication</label>
+                        <input type="text" class="form-control" name="stand_year" value="{{stand_year}}"
+                               placeholder="Standardized year of publication e.g. 2011 or 1937">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Language</label>
+                        <input type="text" class="form-control" name="language" value="{{language}}"
+                               placeholder="Language of the manuscript e.g. Arabic||Chinese">
+                    </div>
+                    <!--                    <div class="mb-3">-->
+                    <!--                        <label class="form-label">Number of pages*</label>-->
+                    <!--                        <input type="text" required class="form-control" name="num_pages" value="{{num_pages}}"-->
+                    <!--                               placeholder="Number of pages for this manuscript">-->
+                    <!--                    </div>-->
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <textarea class="form-control" name="description" rows="3">{{description}}</textarea>
+                        <div class="form-text">Enter the description of this manuscript
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Notes</label>
+                        <textarea class="form-control" name="description" rows="3">{{description}}</textarea>
+                        <div class="form-text">Enter the notes for this manuscript
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Manuscript Upload</label>
+                        <input type="file" required class="form-control" name="manu_file">
+                        <div class="form-text">Choose the PDF of the manuscript file
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" data-toggle="button" aria-pressed="false"
+                            autocomplete="off">Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section><!-- End Portfolio Details Section -->
+
+</main><!-- End #main -->
+{% endblock %}
+{% block script %}
+{{ super() }}
+{% endblock %}
