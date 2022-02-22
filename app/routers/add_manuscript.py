@@ -6,6 +6,7 @@ from app.util.models import get_data
 from app.util.convert_pdf_to_images import pdf_to_images
 from app.util.generate_manifest_from_json import generate_ind_manifest
 from app.util.save_images_to_disk import save_images
+from typing import List
 
 router = APIRouter()
 templates = Jinja2Templates(directory="templates")
@@ -37,7 +38,7 @@ async def handle_form(request: Request,
                       language: str = Form(None),
                       description: str = Form(None),
                       notes: str = Form(None),
-                      image_files: list[UploadFile] = Form(...),
+                      image_files: List[UploadFile] = Form(...),
                       ):
     # get the index for the new text
     new_manu_ind = str(await get_data_from_csv(write_file=False) + 1)
