@@ -1,0 +1,8 @@
+#!/bin/bash
+echo "Enter the text_id you would like to delete:"
+echo "Please enter it in the form of 003 or 012 or 123"
+read id
+git fetch --all
+git reset --hard origin/master
+find . -name "text_$id*" -type f -delete
+
