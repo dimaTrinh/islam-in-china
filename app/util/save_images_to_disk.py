@@ -13,11 +13,11 @@ async def save_images(text_id, image_files):
 
     # save each page to the asset folder
     for (index, (name, image_content)) in enumerate(images):
-        image_dir = Path.cwd() / 'assets' / 'img' / 'texts' / '{}_page_{}.jpg'.format(new_manu_id, pg_number)
+        pg_number = str(index + 1).zfill(3)
+        image_dir = Path.cwd() / 'assets' / 'img' / 'texts' / '{}_page_{}.jpg'.format(text_id, pg_number)
         async with aiofiles.open(image_dir, 'wb') as out_file:
-            pg_number = str(index + 1).zfill(3)
             await out_file.write(image_content)
-
+            
     num_pages = len(images)
 
     return num_pages
