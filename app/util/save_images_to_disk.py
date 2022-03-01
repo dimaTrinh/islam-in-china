@@ -12,12 +12,16 @@ async def save_images(text_id, image_files):
     images.sort()
 
     # save each page to the asset folder
+    # a dictionary that maps the images stored on disk to the original uploaded file names
+    image_name_dict = {}
     for (index, (name, image_content)) in enumerate(images):
         pg_number = str(index + 1).zfill(3)
-        image_dir = Path.cwd() / 'assets' / 'img' / 'texts' / '{}_page_{}.jpg'.format(text_id, pg_number)
+        image_id = '{}_page_{}.jpg'.format(text_id, pg_number)
+        image_dir = Path.cwd() / 'assets' / 'img' / 'texts' / image_id
         async with aiofiles.open(image_dir, 'wb') as out_file:
             await out_file.write(image_content)
-            
+        image_name_dict[image_id] = name
+
     num_pages = len(images)
 
-    return num_pages
+    return num_pages, image_name_dict
