@@ -40,6 +40,10 @@ async def generate_ind_manifest(text_id, num_pages, img_name_dict):
         anno = cvs.annotation()
         anno_label = img_name_dict.get(ident, "")
         anno_img = anno.image(ident, label=anno_label, iiif=True)
+        anno_img.set_hw_from_iiif()
+
+        cvs.height = anno_img.height
+        cvs.width = anno_img.width
 
     # exporting the manifest file to the manifest directory
     mfst = manifest.toJSON(top=True)
