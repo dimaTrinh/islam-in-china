@@ -3,7 +3,7 @@ from pathlib import Path
 from csv import writer
 
 
-async def get_data_from_csv(write_file=False):  # whether we want to write new files to disk or not
+def get_data_from_csv(write_file=False):  # whether we want to write new files to disk or not
     manu_data_dir = Path.cwd() / 'data' / 'csv' / 'pilot_manuscript.csv'
 
     # checking if the manuscript csv is available
@@ -23,13 +23,12 @@ async def get_data_from_csv(write_file=False):  # whether we want to write new f
         for i in manu_df.index:
             # the file is saved by their project ID
             ind_manu_dir = Path.cwd() / 'data' / 'metadata' / '{}.json'.format(manu_df.loc[i].id)
-            if not (ind_manu_dir.is_file()):  # the file has not been saved yet:
-                manu_df.loc[i].to_json(ind_manu_dir)
+            manu_df.loc[i].to_json(ind_manu_dir)
 
     return len(manu_df.index)
 
 
-async def write_data_to_csv(new_row):
+def write_data_to_csv(new_row):
     manu_data_dir = Path.cwd() / 'data' / 'csv' / 'pilot_manuscript.csv'
 
     with open(manu_data_dir, 'a+', newline='') as write_obj:
@@ -37,3 +36,7 @@ async def write_data_to_csv(new_row):
         csv_writer = writer(write_obj)
         # Add contents of list as last row in the csv file
         csv_writer.writerow(new_row)
+
+
+if __name__ == "__main__":
+    get_data_from_csv(write_file=True)

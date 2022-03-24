@@ -56,7 +56,7 @@ async def handle_form(request: Request,
     await write_data_to_csv(new_row)
 
     # generate the new metadata for the site along with its manifest
-    await get_data_from_csv(write_file=True)
+    get_data_from_csv(write_file=True)
     await generate_ind_manifest(new_manu_id, num_pages, image_name_dict)
 
     manuscripts, idx_dict = await get_data()
