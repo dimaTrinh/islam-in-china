@@ -63,3 +63,23 @@ async def manu_list_view(request: Request):
         title='Manuscript List View'
     )
     return templates.TemplateResponse("manu_list.html", context)
+
+
+# history page for Uyghur Community
+@app.get("/history_islam/")
+async def history_islam_view(request: Request):
+    context = dict(
+        request=request,
+        title="History",
+    )
+    return templates.TemplateResponse("history_islam.html", context)
+
+
+# history page for manuscripts
+@app.get("/history_manu/")
+async def history_manu_view(request: Request):
+    context = dict(
+        request=request,
+        title="History",
+    )
+    return templates.TemplateResponse("history_manu.html", context)
