@@ -83,3 +83,23 @@ async def history_manu_view(request: Request):
         title="History",
     )
     return templates.TemplateResponse("history_manu.html", context)
+
+
+# About Us Page
+@app.get("/about_us/")
+async def about_us_view(request: Request):
+    context = dict(
+        request=request,
+        title="About Us",
+    )
+    return templates.TemplateResponse("about_us.html", context)
+
+
+# About Us Page
+@app.get("/contact/")
+async def contact_view(request: Request):
+    context = dict(
+        request=request,
+        title="Contact",
+    )
+    return templates.TemplateResponse("contact.html", context)
