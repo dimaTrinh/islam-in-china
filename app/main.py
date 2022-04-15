@@ -24,7 +24,7 @@ app.include_router(add_manuscript.router)
 async def index(request: Request):
     context = dict(
         request=request,
-        title="Landing Page",
+        title="Islam in China",
     )
     return templates.TemplateResponse("index.html", context)
 
