@@ -1,14 +1,13 @@
 import pandas as pd
 from pathlib import Path
-from csv import writer
 
 
-def get_data_from_csv(write_file=False):  # whether we want to write new files to disk or not
+def get_data_from_spreadsheet(write_file=False):  # whether we want to write new files to disk or not
     manu_data_dir = Path.cwd() / 'data' / 'spreadsheet' / 'pilot.xlsx'
 
     # checking if the manuscript csv is available
     if (manu_data_dir.is_file()):
-        manu_df = pd.read_excel(manu_data_dir, na_values=['Unidentified', 'N/A'], skip_blank_lines=True)
+        manu_df = pd.read_excel(manu_data_dir, na_values=['Unidentified', 'N/A'])
         manu_df.dropna(how="all", inplace=True)  # drop all empty lines
     else:
         raise FileNotFoundError("Manuscript file is missing")
@@ -28,15 +27,18 @@ def get_data_from_csv(write_file=False):  # whether we want to write new files t
     return len(manu_df.index)
 
 
-def write_data_to_csv(new_row):
-    manu_data_dir = Path.cwd() / 'data' / 'csv' / 'pilot_manuscript.csv'
+def write_data_to_spreadsheet(new_row):
+    # read in existing data
+    manu_data_dir = Path.cwd() / 'data' / 'spreadsheet' / 'pilot.xlsx'
+    manu_df = pd.read_excel(manu_data_dir, na_values=['Unidentified', 'N/A'])
+    manu_df.dropna(how="all", inplace=True)
 
-    with open(manu_data_dir, 'a+', newline='') as write_obj:
-        # Create a writer object from csv module
-        csv_writer = writer(write_obj)
-        # Add contents of list as last row in the csv file
-        csv_writer.writerow(new_row)
+    # add in a new row to the dataframe
+    manu_df.loc[len(manu_df.index)] = new_row
+
+    # write the new data to directory
+    manu_df.to_excel(manu_data_dir)
 
 
 if __name__ == "__main__":
-    get_data_from_csv(write_file=True)
+    get_data_from_spreadsheet(write_file=True)

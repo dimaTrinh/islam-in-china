@@ -28,6 +28,12 @@
                 <h3 class="text-center display-4">Adding a new manuscript</h3>
                 <form action="/add_manu_form" method="POST" enctype="multipart/form-data">
                     <div class="mb-3">
+                        <label class="form-label">Title in Arabic/Persian Script*</label>
+                        <input type="text" required class="form-control" name="arab_title_script"
+                               value="{{arab_title_script}}"
+                               placeholder="Title in Arabic/Persian Script">
+                    </div>
+                    <div class="mb-3">
                         <label class="form-label">Arab Title*</label>
                         <input type="text" required class="form-control" name="arab_title" value="{{arab_title}}"
                                placeholder="Arab title">

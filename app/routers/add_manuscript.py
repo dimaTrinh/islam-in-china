@@ -1,7 +1,7 @@
 from fastapi import Request, APIRouter, Depends, UploadFile, File, Form
 from fastapi.templating import Jinja2Templates
 from app.util.login import get_current_username
-from app.util.handle_data_from_csv import get_data_from_csv, write_data_to_csv
+from app.util.handle_data_from_spreadsheet import get_data_from_spreadsheet, write_data_to_spreadsheet
 from app.util.models import get_data
 from app.util.convert_pdf_to_images import pdf_to_images
 from app.util.generate_manifest_from_json import generate_ind_manifest
@@ -23,6 +23,7 @@ async def get_add_manu_form(request: Request, username: str = Depends(get_curren
 
 @router.post("/add_manu_form")
 async def handle_form(request: Request,
+                      arab_title_script: str = Form(...),
                       arab_title: str = Form(...),
                       chinese_title: str = Form(None),
                       author: str = Form(None),
@@ -41,7 +42,7 @@ async def handle_form(request: Request,
                       image_files: List[UploadFile] = Form(...),
                       ):
     # get the index for the new text
-    new_manu_ind = str(await get_data_from_csv(write_file=False) + 1)
+    new_manu_ind = str(await get_data_from_spreadsheet(write_file=False) + 1)
 
     # get the internal id we use for manuscript file
     new_manu_id = "text_{}".format(new_manu_ind.zfill(3))
@@ -50,13 +51,13 @@ async def handle_form(request: Request,
     num_pages, image_name_dict = await save_images(new_manu_id, image_files)
 
     # generate new row to be written to the csv file from the form
-    new_row = [new_manu_id, arab_title, chinese_title, author, assembler, editor,
+    new_row = [new_manu_id, arab_title_script, arab_title, chinese_title, author, assembler, editor,
                scrivener, translator, type, place, publisher, year, stand_year, language,
                num_pages, description, notes]
-    await write_data_to_csv(new_row)
+    await write_data_to_spreadsheet(new_row)
 
     # generate the new metadata for the site along with its manifest
-    get_data_from_csv(write_file=True)
+    get_data_from_spreadsheet(write_file=True)
     await generate_ind_manifest(new_manu_id, num_pages, image_name_dict)
 
     manuscripts, idx_dict = await get_data()

@@ -6,6 +6,7 @@ import srsly
 
 class Manuscript(BaseModel):
     id: Optional[str]
+    arab_title_script: Optional[str]
     arab_title: Optional[str]
     chinese_title: Optional[str]
     author: Optional[str]
