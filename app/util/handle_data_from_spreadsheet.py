@@ -4,17 +4,17 @@ from csv import writer
 
 
 def get_data_from_csv(write_file=False):  # whether we want to write new files to disk or not
-    manu_data_dir = Path.cwd() / 'data' / 'csv' / 'pilot_manuscript.csv'
+    manu_data_dir = Path.cwd() / 'data' / 'spreadsheet' / 'pilot.xlsx'
 
     # checking if the manuscript csv is available
     if (manu_data_dir.is_file()):
-        manu_df = pd.read_csv(manu_data_dir, na_values=['Unidentified', 'N/A'], skip_blank_lines=True)
+        manu_df = pd.read_excel(manu_data_dir, na_values=['Unidentified', 'N/A'], skip_blank_lines=True)
         manu_df.dropna(how="all", inplace=True)  # drop all empty lines
     else:
         raise FileNotFoundError("Manuscript file is missing")
 
     # renaming columns
-    manu_df.columns = ['id', 'arab_title', 'chinese_title', 'author', 'assembler', 'editor',
+    manu_df.columns = ['id', 'arab_title_script', 'arab_title', 'chinese_title', 'author', 'assembler', 'editor',
                        'scrivener', 'translator', 'type', 'place', 'publisher', 'year', 'stand_year', 'language',
                        'num_pages', 'description', 'notes']
 
