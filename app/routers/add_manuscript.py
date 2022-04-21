@@ -55,7 +55,7 @@ async def handle_form(request: Request,
     new_row = [new_manu_id, arab_title_script, arab_title, chinese_title, author, assembler, editor,
                scrivener, translator, type, place, publisher, year, stand_year, language,
                num_pages, description, notes]
-    await write_data_to_spreadsheet(new_row)
+    write_data_to_spreadsheet(new_row)
 
     # generate the new metadata for the site along with its manifest
     get_data_from_spreadsheet(write_file=True)
