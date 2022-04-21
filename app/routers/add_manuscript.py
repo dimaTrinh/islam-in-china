@@ -42,7 +42,7 @@ async def handle_form(request: Request,
                       image_files: List[UploadFile] = Form(...),
                       ):
     # get the index for the new text
-    new_manu_ind = await get_data_from_spreadsheet(write_file=False)
+    new_manu_ind = get_data_from_spreadsheet(write_file=False)
     new_manu_ind += 1
 
     # get the internal id we use for manuscript file
