@@ -37,7 +37,7 @@ def write_data_to_spreadsheet(new_row):
     manu_df.loc[len(manu_df.index)] = new_row
 
     # write the new data to directory
-    manu_df.to_excel(manu_data_dir)
+    manu_df.to_excel(manu_data_dir, index=False)
 
 
 if __name__ == "__main__":
