@@ -42,10 +42,11 @@ async def handle_form(request: Request,
                       image_files: List[UploadFile] = Form(...),
                       ):
     # get the index for the new text
-    new_manu_ind = str(await get_data_from_spreadsheet(write_file=False) + 1)
+    new_manu_ind = await get_data_from_spreadsheet(write_file=False)
+    new_manu_ind += 1
 
     # get the internal id we use for manuscript file
-    new_manu_id = "text_{}".format(new_manu_ind.zfill(3))
+    new_manu_id = "text_{}".format(str(new_manu_ind).zfill(3))
 
     # process and save the images to disk
     num_pages, image_name_dict = await save_images(new_manu_id, image_files)
