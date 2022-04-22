@@ -4,6 +4,14 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
+/*--------------------------------------------------------------
+# Gallery
+#nanogallery2{
+    margin: 0 auto;
+    text-align: center;
+}
+--------------------------------------------------------------*/
+
 
 /*--------------------------------------------------------------
 # General
@@ -76,7 +84,7 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
 }
 #header .logo a {
-  color: #fff;
+  color: #ffffff;
 }
 #header .logo img {
   max-height: 40px;
@@ -870,7 +878,8 @@ section {
   box-shadow: 0px 0 30px rgba(42, 42, 42, 0.08);
 }
 .portfolio-details .portfolio-info h3 {
-  font-size: 22px;
+  color: #29a329;
+  font-size: 32px;
   font-weight: 700;
   margin-bottom: 20px;
   padding-bottom: 20px;

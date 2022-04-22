@@ -2,6 +2,31 @@
 {% block title %}{{title}}{% endblock %}
 {% block head %}
 {{super()}}
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" type="text/javascript"></script>
+<link href="https://cdn.jsdelivr.net/npm/nanogallery2@3/dist/css/nanogallery2.min.css" rel="stylesheet" type="text/css">
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/nanogallery2@3/dist/jquery.nanogallery2.min.js"></script>
+<style>
+.center {
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
 {% endblock %}
 {% block content %}
 <main id="main">
@@ -121,8 +146,106 @@
                 </div>
             </div>
     </section>
+
+    <!-- ### start of the gallery definition ### -->
+    <section class="gallery">
+        <div class="section-title" style="padding-bottom: 0px; margin-bottom: 0px;">
+            <h2>Featured Manuscript</h2>
+        </div>
+        <div id="nanogallery2"></div>
+        <div class="center mt-2">
+            <div class="d-flex justify-content-end">
+                <button type="button" class="btn btn-buy btn-lg mt-5"><a
+                        href="https://islaminchina.org/manuscripts/text_004/">View More</a>
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- ### end of the gallery definition ### -->
 </main><!-- End #main -->
 {% endblock %}
 {% block script %}
 {{ super() }}
+<script>
+jQuery(document).ready(function () {
+jQuery("#nanogallery2").nanogallery2( {
+    // ### gallery settings ###
+    "thumbnailHeight":  "200",
+    "thumbnailWidth":   "200",
+     galleryMosaic : [                       // default layout
+            { w: 2, h: 2, c: 1, r: 1 },
+            { w: 1, h: 1, c: 3, r: 1 },
+            { w: 1, h: 1, c: 3, r: 2 },
+            { w: 1, h: 2, c: 4, r: 1 },
+            { w: 2, h: 1, c: 5, r: 1 },
+            { w: 1, h: 1, c: 5, r: 2 },
+            { w: 1, h: 1, c: 6, r: 2 },
+            { w: 1, h: 1, c: 4, r: 3 },
+            { w: 2, h: 1, c: 2, r: 3 },
+            { w: 1, h: 2, c: 1, r: 3 },
+            { w: 2, h: 2, c: 5, r: 3 },
+            { w: 1, h: 1, c: 2, r: 4 },
+            { w: 2, h: 1, c: 3, r: 4 },
+            { w: 2, h: 1, c: 5, r: 4 },
+            { w: 1, h: 1, c: 6, r: 4 }
+          ],
+
+          // DISPLAY ANIMATION
+          // for gallery
+          galleryDisplayTransitionDuration: 1500,
+          // for thumbnails
+          thumbnailGutterWidth: 3, thumbnailGutterHeight: 3,
+          thumbnailDisplayTransition: 'imageSlideUp',
+          thumbnailDisplayTransitionDuration: 1200,
+          thumbnailDisplayTransitionEasing: 'easeInOutQuint',
+          thumbnailDisplayInterval: 60,
+
+            // THUMBNAIL HOVER ANIMATION
+          thumbnailBuildInit2: 'image_scale_1.15',
+          thumbnailHoverEffect2: 'thumbnail_scale_1.00_1.05_300|image_scale_1.15_1.00',
+          touchAnimation: true,
+          touchAutoOpenDelay: 500,
+
+          // LIGHTBOX
+          viewerToolbar: { display: false },
+          viewerTools:    {
+            topLeft:   'label',
+            topRight:  'shareButton, rotateLeft, rotateRight, fullscreenButton, closeButton'
+          },
+
+          // GALLERY THEME
+          galleryTheme : {
+            thumbnail: { background: '#111' },
+          },
+
+    // ### gallery content ###
+    items: [
+        { src: '../assets/img/texts/text_004_page_001.jpg', srct: '../assets/img/texts/text_004_page_001.jpg' },
+        { src: '../assets/img/texts/text_004_page_002.jpg', srct: '../assets/img/texts/text_004_page_002.jpg'},
+        { src: '../assets/img/texts/text_004_page_003.jpg', srct: '../assets/img/texts/text_004_page_003.jpg'},
+        { src: '../assets/img/texts/text_004_page_004.jpg', srct: '../assets/img/texts/text_004_page_004.jpg'},
+        { src: '../assets/img/texts/text_004_page_005.jpg', srct: '../assets/img/texts/text_004_page_005.jpg'},
+        { src: '../assets/img/texts/text_004_page_006.jpg', srct: '../assets/img/texts/text_004_page_006.jpg'},
+        { src: '../assets/img/texts/text_004_page_007.jpg', srct: '../assets/img/texts/text_004_page_007.jpg'},
+        { src: '../assets/img/texts/text_004_page_008.jpg', srct: '../assets/img/texts/text_004_page_008.jpg'},
+        { src: '../assets/img/texts/text_004_page_009.jpg', srct: '../assets/img/texts/text_004_page_009.jpg'},
+        { src: '../assets/img/texts/text_004_page_010.jpg', srct: '../assets/img/texts/text_004_page_010.jpg'},
+        { src: '../assets/img/texts/text_004_page_011.jpg', srct: '../assets/img/texts/text_004_page_011.jpg'},
+        { src: '../assets/img/texts/text_004_page_012.jpg', srct: '../assets/img/texts/text_004_page_012.jpg'},
+        { src: '../assets/img/texts/text_004_page_013.jpg', srct: '../assets/img/texts/text_004_page_013.jpg'},
+      ],
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+</script>
 {% endblock %}
