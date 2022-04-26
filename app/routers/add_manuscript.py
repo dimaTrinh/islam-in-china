@@ -37,6 +37,7 @@ async def handle_form(request: Request,
                       year: str = Form(None),
                       stand_year: int = Form(0),
                       language: str = Form(None),
+                      num_pages: int = Form(0),
                       description: str = Form(None),
                       notes: str = Form(None),
                       image_files: List[UploadFile] = Form(...),
@@ -49,7 +50,8 @@ async def handle_form(request: Request,
     new_manu_id = "text_{}".format(str(new_manu_ind).zfill(3))
 
     # process and save the images to disk
-    num_pages, image_name_dict = await save_images(new_manu_id, image_files)
+    # return the number of pages uploaded and a dictionary of the files
+    num_pages_up, image_name_dict = await save_images(new_manu_id, image_files)
 
     # generate new row to be written to the csv file from the form
     new_row = [new_manu_id, arab_title_script, arab_title, chinese_title, author, assembler, editor,
@@ -59,7 +61,7 @@ async def handle_form(request: Request,
 
     # generate the new metadata for the site along with its manifest
     get_data_from_spreadsheet(write_file=True)
-    await generate_ind_manifest(new_manu_id, num_pages, image_name_dict)
+    await generate_ind_manifest(new_manu_id, num_pages_up, image_name_dict)
 
     manuscripts, idx_dict = await get_data()
     context = dict(

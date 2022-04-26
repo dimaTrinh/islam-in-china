@@ -9,7 +9,7 @@ async def save_images(text_id, image_files):
     images = [(os.path.splitext(file.filename)[0], await file.read()) for file in image_files]
 
     # sort the images alphabetically by file name
-    images.sort()
+    images.sort(key=lambda x: x[0])
 
     # save each page to the asset folder
     # a dictionary that maps the images stored on disk to the original uploaded file names
