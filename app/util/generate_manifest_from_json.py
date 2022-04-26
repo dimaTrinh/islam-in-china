@@ -5,9 +5,10 @@ import json
 # Where the resources live on the web
 cant_server = "https://islaminchina.org/iiif/2/"
 
+
 # refer to https://github.com/iiif-prezi/iiif-prezi/blob/master/CODE_WALKTHROUGH.md
 # https://github.com/iiif-prezi/iiif-prezi/blob/master/examples/build-from-directory.py
-async def generate_ind_manifest(text_id, num_pages, img_name_dict):
+def generate_ind_manifest(text_id, num_pages, img_name_dict):
     fac = ManifestFactory()
     image_dir = Path.cwd() / 'assets' / 'img' / 'texts'
 
@@ -107,6 +108,7 @@ def generate_all_manifest():
         manifest_dir = Path.cwd() / 'data' / 'manifests' / '{}.json'.format(manu_name)
         with open(manifest_dir, 'w') as outfile:
             json.dump(mfst, outfile)
+
 
 if __name__ == "__main__":
     generate_all_manifest()

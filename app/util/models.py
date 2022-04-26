@@ -25,7 +25,7 @@ class Manuscript(BaseModel):
     notes: Optional[str]
 
 
-async def get_data():
+def get_data():
     data_dir = Path() / 'data' / 'metadata'
     manuscripts = []  # list of manuscripts
     idx_dict = {}  # map the id of the manuscript to the index in the list above

@@ -61,9 +61,9 @@ async def handle_form(request: Request,
 
     # generate the new metadata for the site along with its manifest
     get_data_from_spreadsheet(write_file=True)
-    await generate_ind_manifest(new_manu_id, num_pages_up, image_name_dict)
+    generate_ind_manifest(new_manu_id, num_pages_up, image_name_dict)
 
-    manuscripts, idx_dict = await get_data()
+    manuscripts, idx_dict = get_data()
     context = dict(
         request=request,
         manuscripts=manuscripts,
