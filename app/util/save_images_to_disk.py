@@ -12,7 +12,7 @@ async def save_images(text_id, image_files):
         file_name = os.path.splitext(file.filename)[0]
 
         # match any numbers at the end of the file name then remove leading 0 to get page number
-        pg_number = int(re.search(r'[0-9]*$', file_name).group().lstrip('0'))
+        pg_number = int(re.search(r'[0-9]*$', file_name.strip()).group().lstrip('0'))
 
         # add to our list of images
         images.append([pg_number, file_name, await file.read()])
