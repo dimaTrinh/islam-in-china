@@ -9,3 +9,4 @@ iiif-prezi
 pdf2image
 python-multipart
 openpyxl
+regex
