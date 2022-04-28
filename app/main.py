@@ -1,13 +1,9 @@
-from fastapi import FastAPI, Request, HTTPException, Depends
-from fastapi.templating import Jinja2Templates
+from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel
-from typing import Optional
-import srsly
-from pathlib import Path
+from fastapi.templating import Jinja2Templates
+
 from app.routers import add_manuscript
-from app.util.models import Manuscript, get_data
-import os
+from app.util.models import get_data
 
 app = FastAPI()
 app.mount("/assets", StaticFiles(directory="assets"), name="assets")
@@ -95,7 +91,7 @@ async def about_us_view(request: Request):
     return templates.TemplateResponse("about_us.html", context)
 
 
-# About Us Page
+# contact page, currently blank
 @app.get("/contact/")
 async def contact_view(request: Request):
     context = dict(

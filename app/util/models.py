@@ -1,7 +1,8 @@
-from pydantic import BaseModel
-from typing import Optional
 from pathlib import Path
+from typing import Optional
+
 import srsly
+from pydantic import BaseModel
 
 
 class Manuscript(BaseModel):

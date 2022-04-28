@@ -1,5 +1,6 @@
-import pandas as pd
 from pathlib import Path
+
+import pandas as pd
 
 
 def get_data_from_spreadsheet(write_file=False):  # whether we want to write new files to disk or not

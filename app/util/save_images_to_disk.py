@@ -1,7 +1,8 @@
 import os
-import aiofiles
-from pathlib import Path
 import re
+from pathlib import Path
+
+import aiofiles
 
 
 async def save_images(text_id, image_files):

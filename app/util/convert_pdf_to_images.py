@@ -1,5 +1,6 @@
-from pdf2image import convert_from_bytes
 from pathlib import Path
+
+from pdf2image import convert_from_bytes
 
 
 # reference:  https://pdf2image.readthedocs.io/en/latest/overview.html

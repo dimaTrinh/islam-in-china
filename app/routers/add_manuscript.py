@@ -1,12 +1,13 @@
-from fastapi import Request, APIRouter, Depends, UploadFile, File, Form
-from fastapi.templating import Jinja2Templates
-from app.util.login import get_current_username
-from app.util.handle_data_from_spreadsheet import get_data_from_spreadsheet, write_data_to_spreadsheet
-from app.util.models import get_data
-from app.util.convert_pdf_to_images import pdf_to_images
-from app.util.generate_manifest_from_json import generate_ind_manifest
-from app.util.save_images_to_disk import save_images
 from typing import List
+
+from fastapi import Request, APIRouter, Depends, UploadFile, Form
+from fastapi.templating import Jinja2Templates
+
+from app.util.generate_manifest_from_json import generate_ind_manifest
+from app.util.handle_data_from_spreadsheet import get_data_from_spreadsheet, write_data_to_spreadsheet
+from app.util.login import get_current_username
+from app.util.models import get_data
+from app.util.save_images_to_disk import save_images
 
 router = APIRouter()
 templates = Jinja2Templates(directory="templates")

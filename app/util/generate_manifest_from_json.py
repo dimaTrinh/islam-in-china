@@ -1,6 +1,7 @@
-from iiif_prezi.factory import ManifestFactory
-from pathlib import Path, PurePath
 import json
+from pathlib import Path, PurePath
+
+from iiif_prezi.factory import ManifestFactory
 
 # Where the resources live on the web
 cant_server = "https://islaminchina.org/iiif/2/"
