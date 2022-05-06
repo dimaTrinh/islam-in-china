@@ -33,6 +33,9 @@ def delete_data_from_spreadsheet(text_id):
     manu_data_dir = Path.cwd() / 'data' / 'spreadsheet' / 'pilot.xlsx'
     manu_df = pd.read_excel(manu_data_dir, na_values=['Unidentified', 'N/A'])
     manu_df.dropna(how="all", inplace=True)
+    manu_df.columns = ['id', 'arab_title_script', 'arab_title', 'chinese_title', 'author', 'assembler', 'editor',
+                       'scrivener', 'translator', 'type', 'place', 'publisher', 'year', 'stand_year', 'language',
+                       'num_pages', 'description', 'notes']
 
     # delete the columns that have id the same as text_id
     manu_df = manu_df[manu_df.id != text_id]
