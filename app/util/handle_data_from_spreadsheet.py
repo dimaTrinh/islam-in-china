@@ -28,6 +28,19 @@ def get_data_from_spreadsheet(write_file=False):  # whether we want to write new
     return len(manu_df.index)
 
 
+def delete_data_from_spreadsheet(text_id):
+    # read in existing data
+    manu_data_dir = Path.cwd() / 'data' / 'spreadsheet' / 'pilot.xlsx'
+    manu_df = pd.read_excel(manu_data_dir, na_values=['Unidentified', 'N/A'])
+    manu_df.dropna(how="all", inplace=True)
+
+    # delete the columns that have id the same as text_id
+    manu_df = manu_df[manu_df.id != text_id]
+
+    # write the new data to directory
+    manu_df.to_excel(manu_data_dir, index=False)
+
+
 def write_data_to_spreadsheet(new_row):
     # read in existing data
     manu_data_dir = Path.cwd() / 'data' / 'spreadsheet' / 'pilot.xlsx'

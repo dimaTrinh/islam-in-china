@@ -3,6 +3,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 from app.routers import add_manuscript
+from app.routers import delete_manuscript
 from app.util.models import get_data
 
 app = FastAPI()
@@ -10,6 +11,7 @@ app.mount("/assets", StaticFiles(directory="assets"), name="assets")
 app.mount("/data", StaticFiles(directory="data"), name="data")
 templates = Jinja2Templates(directory="templates")
 app.include_router(add_manuscript.router)
+app.include_router(delete_manuscript.router)
 
 
 # os.environ['TESTING'] = "-1"
