@@ -1,0 +1,138 @@
+[2022-03-03 14:47:17 +0000] [1456991] [INFO] Starting gunicorn 20.1.0
+[2022-03-03 14:47:17 +0000] [1456991] [INFO] Listening at: unix:/tmp/islaminchina.sock (1456991)
+[2022-03-03 14:47:17 +0000] [1456991] [INFO] Using worker: uvicorn.workers.UvicornWorker
+[2022-03-03 14:47:17 +0000] [1457003] [INFO] Booting worker with pid: 1457003
+[2022-03-03 14:47:17 +0000] [1457004] [INFO] Booting worker with pid: 1457004
+[2022-03-03 14:47:17 +0000] [1457005] [INFO] Booting worker with pid: 1457005
+[2022-03-03 14:47:17 +0000] [1457006] [INFO] Booting worker with pid: 1457006
+[2022-03-03 14:47:20 +0000] [1457006] [INFO] Started server process [1457006]
+[2022-03-03 14:47:20 +0000] [1457006] [INFO] Waiting for application startup.
+[2022-03-03 14:47:20 +0000] [1457006] [INFO] Application startup complete.
+[2022-03-03 14:47:20 +0000] [1457003] [INFO] Started server process [1457003]
+[2022-03-03 14:47:20 +0000] [1457003] [INFO] Waiting for application startup.
+[2022-03-03 14:47:20 +0000] [1457003] [INFO] Application startup complete.
+[2022-03-03 14:47:20 +0000] [1457005] [INFO] Started server process [1457005]
+[2022-03-03 14:47:20 +0000] [1457005] [INFO] Waiting for application startup.
+[2022-03-03 14:47:20 +0000] [1457005] [INFO] Application startup complete.
+[2022-03-03 14:47:20 +0000] [1457004] [INFO] Started server process [1457004]
+[2022-03-03 14:47:20 +0000] [1457004] [INFO] Waiting for application startup.
+[2022-03-03 14:47:20 +0000] [1457004] [INFO] Application startup complete.
+[2022-03-03 15:08:54 +0000] [1456991] [INFO] Handling signal: term
+[2022-03-03 15:08:55 +0000] [1457003] [INFO] Shutting down
+[2022-03-03 15:08:55 +0000] [1457006] [INFO] Shutting down
+[2022-03-03 15:08:55 +0000] [1457005] [INFO] Shutting down
+[2022-03-03 15:08:55 +0000] [1457004] [INFO] Shutting down
+[2022-03-03 15:08:55 +0000] [1457003] [INFO] Finished server process [1457003]
+[2022-03-03 15:08:55 +0000] [1457006] [INFO] Finished server process [1457006]
+[2022-03-03 15:08:55 +0000] [1457006] [ERROR] Traceback (most recent call last):
+  File "/srv/islam-in-china/venv/lib/python3.8/site-packages/starlette/routing.py", line 624, in lifespan
+    await receive()
+  File "/srv/islam-in-china/venv/lib/python3.8/site-packages/uvicorn/lifespan/on.py", line 135, in receive
+    return await self.receive_queue.get()
+  File "/usr/lib/python3.8/asyncio/queues.py", line 163, in get
+    await getter
+asyncio.exceptions.CancelledError
+
+[2022-03-03 15:08:55 +0000] [1457006] [INFO] Worker exiting (pid: 1457006)
+[2022-03-03 15:08:55 +0000] [1457003] [ERROR] Traceback (most recent call last):
+  File "/srv/islam-in-china/venv/lib/python3.8/site-packages/starlette/routing.py", line 624, in lifespan
+    await receive()
+  File "/srv/islam-in-china/venv/lib/python3.8/site-packages/uvicorn/lifespan/on.py", line 135, in receive
+    return await self.receive_queue.get()
+  File "/usr/lib/python3.8/asyncio/queues.py", line 163, in get
+    await getter
+asyncio.exceptions.CancelledError
+
+[2022-03-03 15:08:55 +0000] [1457003] [INFO] Worker exiting (pid: 1457003)
+[2022-03-03 15:08:55 +0000] [1457005] [INFO] Finished server process [1457005]
+[2022-03-03 15:08:55 +0000] [1457005] [ERROR] Traceback (most recent call last):
+  File "/srv/islam-in-china/venv/lib/python3.8/site-packages/starlette/routing.py", line 624, in lifespan
+    await receive()
+  File "/srv/islam-in-china/venv/lib/python3.8/site-packages/uvicorn/lifespan/on.py", line 135, in receive
+    return await self.receive_queue.get()
+  File "/usr/lib/python3.8/asyncio/queues.py", line 163, in get
+    await getter
+asyncio.exceptions.CancelledError
+
+[2022-03-03 15:08:55 +0000] [1457005] [INFO] Worker exiting (pid: 1457005)
+[2022-03-03 15:08:55 +0000] [1457004] [INFO] Finished server process [1457004]
+[2022-03-03 15:08:55 +0000] [1457004] [ERROR] Traceback (most recent call last):
+  File "/srv/islam-in-china/venv/lib/python3.8/site-packages/starlette/routing.py", line 624, in lifespan
+    await receive()
+  File "/srv/islam-in-china/venv/lib/python3.8/site-packages/uvicorn/lifespan/on.py", line 135, in receive
+    return await self.receive_queue.get()
+  File "/usr/lib/python3.8/asyncio/queues.py", line 163, in get
+    await getter
+asyncio.exceptions.CancelledError
+
+[2022-03-03 15:08:55 +0000] [1457004] [INFO] Worker exiting (pid: 1457004)
+[2022-03-03 15:08:56 +0000] [1456991] [INFO] Shutting down: Master
+[2022-03-03 15:08:56 +0000] [1457262] [INFO] Starting gunicorn 20.1.0
+[2022-03-03 15:08:56 +0000] [1457262] [INFO] Listening at: unix:/tmp/islaminchina.sock (1457262)
+[2022-03-03 15:08:56 +0000] [1457262] [INFO] Using worker: uvicorn.workers.UvicornWorker
+[2022-03-03 15:08:56 +0000] [1457274] [INFO] Booting worker with pid: 1457274
+[2022-03-03 15:08:56 +0000] [1457275] [INFO] Booting worker with pid: 1457275
+[2022-03-03 15:08:56 +0000] [1457276] [INFO] Booting worker with pid: 1457276
+[2022-03-03 15:08:56 +0000] [1457277] [INFO] Booting worker with pid: 1457277
+[2022-03-03 15:08:59 +0000] [1457274] [INFO] Started server process [1457274]
+[2022-03-03 15:08:59 +0000] [1457274] [INFO] Waiting for application startup.
+[2022-03-03 15:08:59 +0000] [1457274] [INFO] Application startup complete.
+[2022-03-03 15:08:59 +0000] [1457275] [INFO] Started server process [1457275]
+[2022-03-03 15:08:59 +0000] [1457275] [INFO] Waiting for application startup.
+[2022-03-03 15:08:59 +0000] [1457275] [INFO] Application startup complete.
+[2022-03-03 15:08:59 +0000] [1457276] [INFO] Started server process [1457276]
+[2022-03-03 15:08:59 +0000] [1457276] [INFO] Waiting for application startup.
+[2022-03-03 15:08:59 +0000] [1457276] [INFO] Application startup complete.
+[2022-03-03 15:08:59 +0000] [1457277] [INFO] Started server process [1457277]
+[2022-03-03 15:08:59 +0000] [1457277] [INFO] Waiting for application startup.
+[2022-03-03 15:08:59 +0000] [1457277] [INFO] Application startup complete.
+[2022-03-03 15:09:01 +0000] [1457262] [INFO] Handling signal: term
+[2022-03-03 15:09:01 +0000] [1457277] [INFO] Shutting down
+[2022-03-03 15:09:01 +0000] [1457274] [INFO] Shutting down
+[2022-03-03 15:09:01 +0000] [1457275] [INFO] Shutting down
+[2022-03-03 15:09:01 +0000] [1457276] [INFO] Shutting down
+[2022-03-03 15:09:01 +0000] [1457277] [INFO] Finished server process [1457277]
+[2022-03-03 15:09:01 +0000] [1457277] [ERROR] Traceback (most recent call last):
+  File "/srv/islam-in-china/venv/lib/python3.8/site-packages/starlette/routing.py", line 624, in lifespan
+    await receive()
+  File "/srv/islam-in-china/venv/lib/python3.8/site-packages/uvicorn/lifespan/on.py", line 135, in receive
+    return await self.receive_queue.get()
+  File "/usr/lib/python3.8/asyncio/queues.py", line 163, in get
+    await getter
+asyncio.exceptions.CancelledError
+
+[2022-03-03 15:09:01 +0000] [1457277] [INFO] Worker exiting (pid: 1457277)
+[2022-03-03 15:09:01 +0000] [1457274] [INFO] Finished server process [1457274]
+[2022-03-03 15:09:01 +0000] [1457274] [ERROR] Traceback (most recent call last):
+  File "/srv/islam-in-china/venv/lib/python3.8/site-packages/starlette/routing.py", line 624, in lifespan
+    await receive()
+  File "/srv/islam-in-china/venv/lib/python3.8/site-packages/uvicorn/lifespan/on.py", line 135, in receive
+    return await self.receive_queue.get()
+  File "/usr/lib/python3.8/asyncio/queues.py", line 163, in get
+    await getter
+asyncio.exceptions.CancelledError
+
+[2022-03-03 15:09:01 +0000] [1457274] [INFO] Worker exiting (pid: 1457274)
+[2022-03-03 15:09:01 +0000] [1457275] [INFO] Finished server process [1457275]
+[2022-03-03 15:09:01 +0000] [1457275] [ERROR] Traceback (most recent call last):
+  File "/srv/islam-in-china/venv/lib/python3.8/site-packages/starlette/routing.py", line 624, in lifespan
+    await receive()
+  File "/srv/islam-in-china/venv/lib/python3.8/site-packages/uvicorn/lifespan/on.py", line 135, in receive
+    return await self.receive_queue.get()
+  File "/usr/lib/python3.8/asyncio/queues.py", line 163, in get
+    await getter
+asyncio.exceptions.CancelledError
+
+[2022-03-03 15:09:01 +0000] [1457275] [INFO] Worker exiting (pid: 1457275)
+[2022-03-03 15:09:01 +0000] [1457276] [INFO] Finished server process [1457276]
+[2022-03-03 15:09:01 +0000] [1457276] [ERROR] Traceback (most recent call last):
+  File "/srv/islam-in-china/venv/lib/python3.8/site-packages/starlette/routing.py", line 624, in lifespan
+    await receive()
+  File "/srv/islam-in-china/venv/lib/python3.8/site-packages/uvicorn/lifespan/on.py", line 135, in receive
+    return await self.receive_queue.get()
+  File "/usr/lib/python3.8/asyncio/queues.py", line 163, in get
+    await getter
+asyncio.exceptions.CancelledError
+
+[2022-03-03 15:09:01 +0000] [1457276] [INFO] Worker exiting (pid: 1457276)
+[2022-03-03 15:09:02 +0000] [1457262] [INFO] Shutting down: Master

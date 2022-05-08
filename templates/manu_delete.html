@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block title %}{{title}}{% endblock %}
+{% block head %}
+{{super()}}
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
+{% endblock %}
+{% block content %}
+<main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Manuscript Delete</h2>
+                <ol>
+                    <li><a href="/">Home</a></li>
+                    <li>Manuscript Delete</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- End Breadcrumbs -->
+
+    <!--Begin of table-->
+    <div class="container mb-5">
+        <br>
+        <table id="manuscriptTable" class="table table-hover">
+            <thead>
+            <tr>
+                <th>Function</th>
+                <th>Title in Arabic/Persian Script</th>
+                <th>Arabic Title</th>
+                <th>Chinese Title</th>
+                <th>Author</th>
+                <th>Editor</th>
+                <th>Translator</th>
+                <th>Type</th>
+                <th>Place</th>
+                <th>Year</th>
+                <th>Publisher</th>
+                <th>Number of Pages</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if manuscripts %}
+            {% for manu in manuscripts %}
+            <tr>
+                <td>
+                    <button type="button" class="btn btn-danger"><a
+                            href="{{ '/delete_manuscript/%s' %manu.id }}" style="color:white;"
+                            onclick="return confirm('Are you sure you want to delete {{'manuscript %s?' %manu.id}}')">Delete</a>
+                    </button>
+                </td>
+                <td><a href="{{ '/manuscripts/%s' %manu.id }}" style="display:block;">{{manu.arab_title_script}}</td>
+                <td><a href="{{ '/manuscripts/%s' %manu.id }}" style="display:block;">{{manu.arab_title}}</td>
+                <td>{{manu.chinese_title}}</td>
+                <td>{{manu.author}}</td>
+                <td>{{manu.editor}}</td>
+                <td>{{manu.translator}}</td>
+                <td>{{manu.type}}</td>
+                <td>{{manu.place}}</td>
+                <td>{{manu.stand_year}}</td>
+                <td>{{manu.publisher}}</td>
+                <td>{{manu.num_pages}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <strong> There are no manuscripts available at this time in the db. </strong>
+        {% endif %}
+    </div>
+</main>
+{% endblock %}
+{% block script %}
+{{ super() }}
+<script src="//code.jquery.com/jquery-3.5.1.js"></script>
+<script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
+<script> $(document).ready(function () {
+  $('#manuscriptTable').DataTable({
+  "pageLength": 10,
+  "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+  columnDefs: [
+    {
+        targets: "_all",
+        className: 'dt-head-center'
+    },
+  ],
+  });
+});
+
+</script>
+{% endblock %}

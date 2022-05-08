@@ -1,16 +1,18 @@
-from iiif_prezi.factory import ManifestFactory
-from pathlib import Path, PurePath
 import json
+from pathlib import Path, PurePath
+
+from iiif_prezi.factory import ManifestFactory
+
+# Where the resources live on the web
+cant_server = "https://islaminchina.org/iiif/2/"
 
 
 # refer to https://github.com/iiif-prezi/iiif-prezi/blob/master/CODE_WALKTHROUGH.md
 # https://github.com/iiif-prezi/iiif-prezi/blob/master/examples/build-from-directory.py
-async def generate_ind_manifest(text_id, num_pages):
+def generate_ind_manifest(text_id, num_pages, img_name_dict):
     fac = ManifestFactory()
     image_dir = Path.cwd() / 'assets' / 'img' / 'texts'
 
-    # Where the resources live on the web
-    cant_server = "http://167.99.0.192:8000/iiif/2/"
     fac.set_base_prezi_uri(cant_server)
     # Where the resources live on disk
     fac.set_base_prezi_dir("/")
@@ -36,7 +38,14 @@ async def generate_ind_manifest(text_id, num_pages):
         # get page number as label for the page
         title = 'Page {}'.format(page)
         cvs = seq.canvas(ident=ident, label=title)
-        cvs.set_image_annotation(ident, iiif=True)
+
+        anno = cvs.annotation()
+        anno_label = img_name_dict.get(ident, "")
+        anno_img = anno.image(ident, label=anno_label, iiif=True)
+        anno_img.set_hw_from_iiif()
+
+        cvs.height = anno_img.height
+        cvs.width = anno_img.width
 
     # exporting the manifest file to the manifest directory
     mfst = manifest.toJSON(top=True)
@@ -46,12 +55,10 @@ async def generate_ind_manifest(text_id, num_pages):
         json.dump(mfst, outfile)
 
 
-async def generate_all_manifest():
+def generate_all_manifest():
     fac = ManifestFactory()
     image_dir = Path.cwd() / 'assets' / 'img' / 'texts'
 
-    # Where the resources live on the web
-    cant_server = "http://167.99.0.192:8000/iiif/2/"
     fac.set_base_prezi_uri(cant_server)
     # Where the resources live on disk
     fac.set_base_prezi_dir("/")
@@ -102,3 +109,7 @@ async def generate_all_manifest():
         manifest_dir = Path.cwd() / 'data' / 'manifests' / '{}.json'.format(manu_name)
         with open(manifest_dir, 'w') as outfile:
             json.dump(mfst, outfile)
+
+
+if __name__ == "__main__":
+    generate_all_manifest()

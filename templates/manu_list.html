@@ -25,10 +25,10 @@
         <table id="manuscriptTable" class="table table-hover">
             <thead>
             <tr>
+                <th> Title in Arabic/Persian Script</th>
                 <th> Arabic Title</th>
                 <th> Chinese Title</th>
                 <th> Author</th>
-                <th> Assembler</th>
                 <th> Editor</th>
                 <th> Translator</th>
                 <th> Type</th>
@@ -42,11 +42,12 @@
             {% if manuscripts %}
             {% for manu in manuscripts %}
             <tr>
+                <td><a href="{{ '/manuscripts/%s' %manu.id }}" style="display:block;">{{manu.arab_title_script}}</a>
+                </td>
                 <td><a href="{{ '/manuscripts/%s' %manu.id }}" style="display:block;">{{manu.arab_title}}</a>
                 </td>
                 <td>{{manu.chinese_title}}</td>
                 <td>{{manu.author}}</td>
-                <td>{{manu.assembler}}</td>
                 <td>{{manu.editor}}</td>
                 <td>{{manu.translator}}</td>
                 <td>{{manu.type}}</td>

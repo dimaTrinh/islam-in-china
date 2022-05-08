@@ -28,6 +28,12 @@
                 <h3 class="text-center display-4">Adding a new manuscript</h3>
                 <form action="/add_manu_form" method="POST" enctype="multipart/form-data">
                     <div class="mb-3">
+                        <label class="form-label">Title in Arabic/Persian Script*</label>
+                        <input type="text" required class="form-control" name="arab_title_script"
+                               value="{{arab_title_script}}"
+                               placeholder="Title in Arabic/Persian Script">
+                    </div>
+                    <div class="mb-3">
                         <label class="form-label">Arab Title*</label>
                         <input type="text" required class="form-control" name="arab_title" value="{{arab_title}}"
                                placeholder="Arab title">
@@ -88,15 +94,15 @@
                                placeholder="Standardized year of publication e.g. 2011 or 1937">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Language</label>
-                        <input type="text" class="form-control" name="language" value="{{language}}"
+                        <label class="form-label">Language*</label>
+                        <input type="text" required class="form-control" name="language" value="{{language}}"
                                placeholder="Language of the manuscript e.g. Arabic||Chinese">
                     </div>
-                    <!--                    <div class="mb-3">-->
-                    <!--                        <label class="form-label">Number of pages*</label>-->
-                    <!--                        <input type="text" required class="form-control" name="num_pages" value="{{num_pages}}"-->
-                    <!--                               placeholder="Number of pages for this manuscript">-->
-                    <!--                    </div>-->
+                    <div class="mb-3">
+                        <label class="form-label">Number of pages*</label>
+                        <input type="text" required class="form-control" name="num_pages" value="{{num_pages}}"
+                               placeholder="Number of pages for this manuscript">
+                    </div>
                     <div class="mb-3">
                         <label class="form-label">Description</label>
                         <textarea class="form-control" name="description" rows="3">{{description}}</textarea>
@@ -105,14 +111,14 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Notes</label>
-                        <textarea class="form-control" name="description" rows="3">{{description}}</textarea>
+                        <textarea class="form-control" name="notes" rows="3">{{notes}}</textarea>
                         <div class="form-text">Enter the notes for this manuscript
                         </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Manuscript Upload</label>
-                        <input type="file" required class="form-control" name="manu_file">
-                        <div class="form-text">Choose the PDF of the manuscript file
+                        <input type="file" multiple required class="form-control" name="image_files">
+                        <div class="form-text">Select the images for this manuscript
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary" data-toggle="button" aria-pressed="false"

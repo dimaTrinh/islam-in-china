@@ -2,6 +2,20 @@
 {% block title %}{{title}}{% endblock %}
 {% block head %}
 {{super()}}
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" type="text/javascript"></script>
+<link href="https://cdn.jsdelivr.net/npm/nanogallery2@3/dist/css/nanogallery2.min.css" rel="stylesheet" type="text/css">
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/nanogallery2@3/dist/jquery.nanogallery2.min.js"></script>
+<style>
+.center {
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+</style>
 {% endblock %}
 {% block content %}
 <main id="main">
@@ -18,13 +32,11 @@
                          style="background: url(../assets/img/slide/IMG_1075.JPG);background-size:cover;">
                         <div class="carousel-container">
                             <div class="carousel-content">
-                                <h2 class="animate__animated animate__fadeInDown">Manuscripts View</h2>
-                                <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui
-                                    aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem
-                                    mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti
-                                    vel. Minus et tempore modi architecto.</p>
+                                <h2 class="animate__animated animate__fadeInDown">Manuscript List</h2>
+                                <p class="animate__animated animate__fadeInUp">Dive right into the full list of
+                                    manuscripts that we currently have</p>
                                 <div>
-                                    <a href="/manuscripts/"
+                                    <a href="https://islaminchina.org/manuscripts/"
                                        class="btn-get-started animate__animated animate__fadeInUp scrollto">Read
                                         More</a>
                                 </div>
@@ -37,13 +49,10 @@
                          style="background: url(../assets/img/slide/IMG_1174.JPG);background-size:cover;">
                         <div class="carousel-container">
                             <div class="carousel-content">
-                                <h2 class="animate__animated animate__fadeInDown">Lorem Ipsum Dolor</h2>
-                                <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui
-                                    aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem
-                                    mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti
-                                    vel. Minus et tempore modi architecto.</p>
+                                <h2 class="animate__animated animate__fadeInDown">About Us</h2>
+                                <p class="animate__animated animate__fadeInUp">Learn more about the project</p>
                                 <div>
-                                    <a href="/"
+                                    <a href="https://islaminchina.org/about_us/"
                                        class="btn-get-started animate__animated animate__fadeInUp scrollto">Read
                                         More</a>
                                 </div>
@@ -56,13 +65,11 @@
                          style="background: url(../assets/img/slide/IMG_1147.jpg);background-size:cover;">
                         <div class="carousel-container">
                             <div class="carousel-content">
-                                <h2 class="animate__animated animate__fadeInDown">Sequi ea ut et est quaerat</h2>
-                                <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui
-                                    aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem
-                                    mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti
-                                    vel. Minus et tempore modi architecto.</p>
+                                <h2 class="animate__animated animate__fadeInDown">Featured Manuscript</h2>
+                                <p class="animate__animated animate__fadeInUp">Get started right away with a manuscript
+                                    from our collection</p>
                                 <div>
-                                    <a href="/"
+                                    <a href="https://islaminchina.org/manuscripts/text_004/"
                                        class="btn-get-started animate__animated animate__fadeInUp scrollto">Read
                                         More</a>
                                 </div>
@@ -83,8 +90,9 @@
             </div>
         </div>
     </section><!-- End Hero -->
+
     <!-- ======= About Section ======= -->
-    <section id="about" class="about">
+    <section class="about">
         <div class="container">
 
             <div class="row no-gutters">
@@ -93,41 +101,130 @@
                 <div class="col-xl-7 ps-0 ps-lg-5 pe-lg-1 d-flex align-items-stretch">
                     <div class="content d-flex flex-column jus tify-content-center">
                         <h3>Our project aims to spread knowledge about Islam in China</h3>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-                        </p>
                         <div class="row">
                             <div class="col-md-6 icon-box">
-                                <i class="bx bx-receipt"></i>
-                                <h4>Corporis voluptates sit</h4>
-                                <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut
-                                    aliquip</p>
-                            </div>
-                            <div class="col-md-6 icon-box">
-                                <i class="bx bx-cube-alt"></i>
-                                <h4>Ullamco laboris nisi</h4>
-                                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                                    deserunt</p>
-                            </div>
-                            <div class="col-md-6 icon-box">
-                                <i class="bx bx-images"></i>
-                                <h4>Labore consequatur</h4>
-                                <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
-                            </div>
-                            <div class="col-md-6 icon-box">
                                 <i class="bx bx-shield"></i>
-                                <h4>Beatae veritatis</h4>
-                                <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
+                                <h4>To Preserve</h4>
+                                <p>We preserve these manuscripts to ensure that the culture and identity of the Muslim
+                                    community are not lost in the face of oppression.
+                                </p>
+                            </div>
+                            <div class="col-md-6 icon-box">
+                                <i class="bx bx-search"></i>
+                                <h4>To Investigate </h4>
+                                <p>We intend to track down many of the manuscripts that are considered important parts
+                                    of Sino-Islamic culture.
+                                </p>
+                            </div>
+                            <div class="col-md-6 icon-box">
+                                <i class="bx bx-chat"></i>
+                                <h4>To Understand</h4>
+                                <p>We add these manuscripts to our online archive and analyze their significance to the
+                                    community.
+                                </p>
+                            </div>
+                            <div class="col-md-6 icon-box">
+                                <i class="bx bx-share"></i>
+                                <h4>To Share</h4>
+                                <p>By preserving these manuscripts, members of the Sino-Muslim communities and scholars
+                                    of various fields are able to study these manuscripts.
+                                </p>
                             </div>
                         </div>
                     </div><!-- End .content-->
                 </div>
             </div>
+    </section>
+
+    <!-- ### start of the gallery definition ### -->
+    <section class="gallery">
+        <div class="section-title" style="padding-bottom: 0px; margin-bottom: 0px;">
+            <h2>Featured Manuscript</h2>
         </div>
-    </section><!-- End About Section -->
+        <div id="nanogallery2"></div>
+        <div class="center mt-2">
+            <div class="d-flex justify-content-end">
+                <button type="button" class="btn btn-buy btn-lg mt-5"><a
+                        href="https://islaminchina.org/manuscripts/text_004/">View More</a>
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- ### end of the gallery definition ### -->
 </main><!-- End #main -->
 {% endblock %}
 {% block script %}
 {{ super() }}
+<script>
+jQuery(document).ready(function () {
+jQuery("#nanogallery2").nanogallery2( {
+    // ### gallery settings ###
+    "thumbnailHeight":  "200",
+    "thumbnailWidth":   "200",
+     galleryMosaic : [                       // default layout
+            { w: 2, h: 2, c: 1, r: 1 },
+            { w: 1, h: 1, c: 3, r: 1 },
+            { w: 1, h: 1, c: 3, r: 2 },
+            { w: 1, h: 2, c: 4, r: 1 },
+            { w: 2, h: 1, c: 5, r: 1 },
+            { w: 1, h: 1, c: 5, r: 2 },
+            { w: 1, h: 1, c: 6, r: 2 },
+            { w: 1, h: 1, c: 4, r: 3 },
+            { w: 2, h: 1, c: 2, r: 3 },
+            { w: 1, h: 2, c: 1, r: 3 },
+            { w: 2, h: 2, c: 5, r: 3 },
+            { w: 1, h: 1, c: 2, r: 4 },
+            { w: 2, h: 1, c: 3, r: 4 },
+            { w: 2, h: 1, c: 5, r: 4 },
+            { w: 1, h: 1, c: 6, r: 4 }
+          ],
+
+          // DISPLAY ANIMATION
+          // for gallery
+          galleryDisplayTransitionDuration: 1500,
+          // for thumbnails
+          thumbnailGutterWidth: 3, thumbnailGutterHeight: 3,
+          thumbnailDisplayTransition: 'imageSlideUp',
+          thumbnailDisplayTransitionDuration: 1200,
+          thumbnailDisplayTransitionEasing: 'easeInOutQuint',
+          thumbnailDisplayInterval: 60,
+
+            // THUMBNAIL HOVER ANIMATION
+          thumbnailBuildInit2: 'image_scale_1.15',
+          thumbnailHoverEffect2: 'thumbnail_scale_1.00_1.15_300|image_scale_1.15_1.00',
+          touchAnimation: true,
+          touchAutoOpenDelay: 500,
+
+          // LIGHTBOX
+          viewerToolbar: { display: false },
+          viewerTools:    {
+            topLeft:   'label',
+            topRight:  'shareButton, rotateLeft, rotateRight, fullscreenButton, closeButton'
+          },
+
+          // GALLERY THEME
+          galleryTheme : {
+            thumbnail: { background: '#111' },
+          },
+
+    // ### gallery content ###
+    items: [
+        { src: '../assets/img/texts/text_004_page_001.jpg', srct: '../assets/img/texts/text_004_page_001.jpg' },
+        { src: '../assets/img/texts/text_004_page_002.jpg', srct: '../assets/img/texts/text_004_page_002.jpg'},
+        { src: '../assets/img/texts/text_004_page_003.jpg', srct: '../assets/img/texts/text_004_page_003.jpg'},
+        { src: '../assets/img/texts/text_004_page_004.jpg', srct: '../assets/img/texts/text_004_page_004.jpg'},
+        { src: '../assets/img/texts/text_004_page_005.jpg', srct: '../assets/img/texts/text_004_page_005.jpg'},
+        { src: '../assets/img/texts/text_004_page_006.jpg', srct: '../assets/img/texts/text_004_page_006.jpg'},
+        { src: '../assets/img/texts/text_004_page_007.jpg', srct: '../assets/img/texts/text_004_page_007.jpg'},
+        { src: '../assets/img/texts/text_004_page_008.jpg', srct: '../assets/img/texts/text_004_page_008.jpg'},
+        { src: '../assets/img/texts/text_004_page_009.jpg', srct: '../assets/img/texts/text_004_page_009.jpg'},
+        { src: '../assets/img/texts/text_004_page_010.jpg', srct: '../assets/img/texts/text_004_page_010.jpg'},
+        { src: '../assets/img/texts/text_004_page_011.jpg', srct: '../assets/img/texts/text_004_page_011.jpg'},
+        { src: '../assets/img/texts/text_004_page_012.jpg', srct: '../assets/img/texts/text_004_page_012.jpg'},
+        { src: '../assets/img/texts/text_004_page_013.jpg', srct: '../assets/img/texts/text_004_page_013.jpg'},
+      ],
+  });
+});
+
+</script>
 {% endblock %}

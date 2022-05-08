@@ -1,11 +1,13 @@
-from pydantic import BaseModel
-from typing import Optional
 from pathlib import Path
+from typing import Optional
+
 import srsly
+from pydantic import BaseModel
 
 
 class Manuscript(BaseModel):
     id: Optional[str]
+    arab_title_script: Optional[str]
     arab_title: Optional[str]
     chinese_title: Optional[str]
     author: Optional[str]
@@ -24,7 +26,7 @@ class Manuscript(BaseModel):
     notes: Optional[str]
 
 
-async def get_data():
+def get_data():
     data_dir = Path() / 'data' / 'metadata'
     manuscripts = []  # list of manuscripts
     idx_dict = {}  # map the id of the manuscript to the index in the list above

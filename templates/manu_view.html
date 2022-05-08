@@ -52,6 +52,7 @@
                     <div class="portfolio-info">
                         <h3>Manuscript Information</h3>
                         <ul>
+                            <li><strong>Title in Arabic/Persian Script</strong>: {{manu.arab_title_script}}</li>
                             <li><strong>Arabic Title</strong>: {{manu.arab_title}}</li>
                             <li><strong>Chinese Title</strong>: {{manu.chinese_title}}</li>
                             <li><strong>Author</strong>: {{manu.author}}</li>
@@ -62,6 +63,7 @@
                             <li><strong>Type</strong>: {{manu.type}}</li>
                             <li><strong>Place</strong>: {{manu.place}}</li>
                             <li><strong>Year</strong>: {{manu.year}}</li>
+                            <li><strong>Standard Year</strong>: {{manu.stand_year}}</li>
                             <li><strong>Language</strong>: {{manu.language}}</li>
                             <li><strong>Publisher</strong>: {{manu.publisher}}</li>
                             <li><strong>Number of Pages</strong>: {{manu.num_pages}}</li>
@@ -70,7 +72,7 @@
                         </ul>
                     </div>
                     <div class="d-flex justify-content-end">
-                        <button type="button" class="btn btn-buy btn-lg"><a
+                        <button type="button" class="btn btn-buy btn-lg mt-4"><a
                                 href="{{ '/manuscript_view/%s' %manu.id }}">View Pages</a>
                         </button>
                     </div>
